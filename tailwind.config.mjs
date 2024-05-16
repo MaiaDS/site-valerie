@@ -27,6 +27,7 @@ export default {
             h1: ['3rem', { fontWeight: '800' }],
             h2: ['2.25rem', { fontWeight: '700' }],
             h3: ['2rem', { fontWeight: '700' }],
+            h4: ['1.5rem', { fontWeight: '600' }],
             sm: ['0.75rem', { fontWeight: '400' }],
         },
     },
