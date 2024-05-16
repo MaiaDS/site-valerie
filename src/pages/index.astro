@@ -1,58 +1,40 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Layout from '../layouts/Layout.astro';
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-            <span>logo</span>
-			<h1>{SITE_TITLE}</h1>
-			<h2>{SITE_DESCRIPTION}</h2>
+<Layout
+	title={SITE_TITLE}
+	description={SITE_DESCRIPTION}
+>
+    <span>logo</span>
+    <h1>{SITE_TITLE}</h1>
+    <h2>{SITE_DESCRIPTION}</h2>
 
-            <section>
-                <h3>Les clés</h3>
-                <p>On passe tous, une fois dans sa vie de couple, un cap difficile à surmonter.</p>
-                <p>Que ce soit pour raviver la flamme, apprendre à mieux communiquer ou encore se séparer sans se déchirer. Je serais une aide bienveillante et professionnelle pour vous permettre d’aborder vos difficultés en trouvant une solution axé sur le présent vers le futur en mode action.</p>
-                <p>Je propose un accompagnement pour trouver les clés,qui permettront de comprendre vos comportements et créer de nouvelles habitudes positives</p>
-                <p>Mes domaines d’intervention vont des conflits affectifs aux mésententes ou des conflits relationnels aux problèmes sexuels.</p>
-            </section>
+    <section>
+        <h3>Les clés</h3>
+        <p>On passe tous, une fois dans sa vie de couple, un cap difficile à surmonter.</p>
+        <p>Que ce soit pour raviver la flamme, apprendre à mieux communiquer ou encore se séparer sans se déchirer. Je serais une aide bienveillante et professionnelle pour vous permettre d’aborder vos difficultés en trouvant une solution axé sur le présent vers le futur en mode action.</p>
+        <p>Je propose un accompagnement pour trouver les clés,qui permettront de comprendre vos comportements et créer de nouvelles habitudes positives</p>
+        <p>Mes domaines d’intervention vont des conflits affectifs aux mésententes ou des conflits relationnels aux problèmes sexuels.</p>
+    </section>
 
-            <section>
-                <h3>Mes services</h3>
-                <ul>
-                    <li>Infidélité</li>
-                    <li>Jalousie</li>
-                    <li>Routine</li>
-                    <li>Besoins sexuels</li>
-                    <li>Manque de désir</li>
-                    <li>Gestion des conflits</li>
-                    <li>Apprendre a mieux communiquer</li>
-                </ul>
-                <ul>
-                    <li>Confiance en soi</li>
-                    <li>S’exprimer librement</li>
-                    <li>Dépendance affective</li>
-                    <li>Affiner la problématique du couple</li>
-                </ul>
-            </section>
-		</main>
-		<Footer />
-	</body>
-</html>
-
-<style>
-	body {
-        @apply flex flex-col;
-        main {
-            @apply flex-1 p-lg bg-white;
-	    }
-	}
-</style>
+    <section>
+        <h3>Mes services</h3>
+        <ul>
+            <li>Infidélité</li>
+            <li>Jalousie</li>
+            <li>Routine</li>
+            <li>Besoins sexuels</li>
+            <li>Manque de désir</li>
+            <li>Gestion des conflits</li>
+            <li>Apprendre a mieux communiquer</li>
+        </ul>
+        <ul>
+            <li>Confiance en soi</li>
+            <li>S’exprimer librement</li>
+            <li>Dépendance affective</li>
+            <li>Affiner la problématique du couple</li>
+        </ul>
+    </section>
+</Layout>
