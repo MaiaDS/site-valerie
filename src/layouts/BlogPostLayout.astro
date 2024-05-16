@@ -1,0 +1,48 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+import Layout from './Layout.astro';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, publishedDate, updatedDate, mainImage } = Astro.props;
+---
+
+<Layout title={title} description={description} classname="pt-0">
+    <hgroup class="header">
+        {mainImage && <img width={1020} height={510} src={mainImage} alt="" />}
+        <h1>{title}</h1>
+        <span>
+            <FormattedDate date={publishedDate} />
+            {
+                updatedDate && (
+                    <span>
+                        Mise à jour le <FormattedDate date={updatedDate} />
+                    </span>
+                )
+            }
+        </span>
+    </hgroup>
+    <section class="content">
+        <slot />
+    </section>
+</Layout>
+
+<style>
+    .header, .content {
+        @apply w-10/12 m-auto;
+    }
+
+    .header {
+        @apply text-center border-b-[0.5px] border-b-secondary pb-md mb-xl;
+        > img {
+            @apply shadow-md w-full rounded-lg mb-md;
+        }
+    }
+
+    @media (max-width: 720px) {
+        .header, .content {
+        @apply w-full;
+    }
+    }
+</style>
