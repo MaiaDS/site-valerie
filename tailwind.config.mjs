@@ -21,7 +21,11 @@ export default {
             xl: '3rem',
             xxl: '4.5rem',
         },
-        fontFamily: {},
+        fontFamily: {
+            sans: ['Roboto'],
+            roboto: ['Roboto', 'sans'],
+            italiana: ['Italiana', 'sans'],
+        },
         fontSize: {
             DEFAULT: ['1rem', { fontWeight: '400' }],
             h1: ['3rem', { fontWeight: '800' }],
