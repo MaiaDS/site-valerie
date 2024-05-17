@@ -1,4 +1,5 @@
 ---
+import Logo from './Logo.astro';
 import NavLink from './NavLink.astro';
 
 const { image } = Astro.props;
@@ -6,7 +7,7 @@ const { image } = Astro.props;
 
 <header>
 	<nav>
-        <NavLink href="/">Accueil</NavLink>
+        <NavLink href="/"><Logo classes='scale-[200%] mr-xs'/>Accueil</NavLink>
         <NavLink href="/blog">Blog</NavLink>
         <NavLink href="/about">À propos</NavLink>
 	</nav>
@@ -16,8 +17,8 @@ const { image } = Astro.props;
 <style>
 	header {
         nav {
-            @apply w-full flex items-center gap-md justify-center py-lg bg-white shadow-sm z-20;
-	    }
+            @apply w-full flex items-center gap-md justify-center py-lg shadow-sm z-20;
+        }
 
         > img {
             @apply w-full h-[40vh] object-cover;

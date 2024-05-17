@@ -16,10 +16,14 @@ const isActive = href === pathname || href === '/' + subpath?.[0];
 
 <style>
 	a {
-        @apply inline-block text-black uppercase;
+        @apply inline-block text-black font-bold uppercase flex gap-xs items-center;
 
-        &.active {
-            @apply font-bold text-accent;
+        &:hover, &.active {
+            @apply text-accent;
+
+            svg path {
+                @apply fill-accent;
+            }
         }
 	}
 </style>
