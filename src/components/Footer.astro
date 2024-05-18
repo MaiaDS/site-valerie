@@ -3,7 +3,6 @@ const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} Valérie Da Silva. Tous droits réservés.
 	<div class="social-links">
 		<a href="" target="_blank">
 			<span class="sr-only">suivez moi sur instagram</span>
@@ -14,12 +13,14 @@ const today = new Date();
 			email
 		</a>
 	</div>
+    &copy; {today.getFullYear()} Valérie Da Silva. Tous droits réservés.
 </footer>
+
 <style>
 	footer {
         @apply px-lg py-md bg-primary text-center;
 		.social-links {
-            @apply flex justify-center gap-rg mt-rg;
+            @apply flex justify-center gap-rg mb-rg;
 	    }
 	}
 </style>

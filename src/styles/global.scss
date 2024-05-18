@@ -19,7 +19,7 @@
 }
 
 body {
-    @apply m-0 p-0 text-black min-h-[100vh] bg-white font-roboto;
+    @apply m-0 p-0 text-black min-h-[100vh] bg-white font-roboto overflow-x-hidden;
 }
 
 h1 {
@@ -43,6 +43,11 @@ strong,
 b {
     @apply font-bold;
 }
+
+.background::before {
+    @apply content-[''] block absolute w-[100vw] z-[-1] left-1/2 -translate-x-1/2;
+}
+
 /* 
 a {
     color: var(--accent);

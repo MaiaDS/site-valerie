@@ -8,35 +8,94 @@ import Layout from '../layouts/Layout.astro';
 	title={SITE_TITLE}
 	description={SITE_DESCRIPTION}
 >
+    <hgroup class="background">
+        <Logo classes="w-[25vw] h-auto"/>
+        <h1>{SITE_TITLE}</h1>
+        <h2 class="-mt-sm">{SITE_DESCRIPTION}</h2>
+    </hgroup>
 
-    <Logo classes="w-[25vw] h-auto"/>
-    <h1>{SITE_TITLE}</h1>
-    <h2>{SITE_DESCRIPTION}</h2>
-
-    <section>
-        <h3>Les clés</h3>
+    <section class="flex flex-col gap-sm py-xl">
         <p>On passe tous, une fois dans sa vie de couple, un cap difficile à surmonter.</p>
         <p>Que ce soit pour raviver la flamme, apprendre à mieux communiquer ou encore se séparer sans se déchirer. Je serais une aide bienveillante et professionnelle pour vous permettre d’aborder vos difficultés en trouvant une solution axé sur le présent vers le futur en mode action.</p>
         <p>Je propose un accompagnement pour trouver les clés,qui permettront de comprendre vos comportements et créer de nouvelles habitudes positives</p>
         <p>Mes domaines d’intervention vont des conflits affectifs aux mésententes ou des conflits relationnels aux problèmes sexuels.</p>
     </section>
 
-    <section>
-        <h3>Mes services</h3>
-        <ul>
-            <li>Infidélité</li>
-            <li>Jalousie</li>
-            <li>Routine</li>
-            <li>Besoins sexuels</li>
-            <li>Manque de désir</li>
-            <li>Gestion des conflits</li>
-            <li>Apprendre a mieux communiquer</li>
-        </ul>
-        <ul>
-            <li>Confiance en soi</li>
-            <li>S’exprimer librement</li>
-            <li>Dépendance affective</li>
-            <li>Affiner la problématique du couple</li>
-        </ul>
+    <section class="services">
+        <h3 class="background">Mes services</h3>
+        <div>
+            <article>
+                <div>
+                    <img src={'/couple-illustration.png'} alt="couple illustration" />
+                </div>
+                <ul>
+                    <li>Infidélité</li>
+                    <li>Jalousie</li>
+                    <li>Routine</li>
+                    <li>Besoins sexuels</li>
+                    <li>Manque de désir</li>
+                    <li>Gestion des conflits</li>
+                    <li>Apprendre a mieux communiquer</li>
+                </ul>
+            </article>
+
+            <article>
+                <div>
+                    <img src={'/single-illustration.png'} alt="couple illustration" />
+                </div>
+                <ul>
+                    <li>Confiance en soi</li>
+                    <li>S’exprimer librement</li>
+                    <li>Dépendance affective</li>
+                    <li>Affiner la problématique du couple</li>
+                </ul>
+            </article>
+        </div>
     </section>
+
+    
 </Layout>
+
+<style>
+    hgroup {
+        @apply m-auto flex flex-col gap-xs items-center relative;
+        &::before {
+            @apply bg-primary h-[40%] -top-lg ;
+        }
+    }
+
+    .services {
+        @apply relative pb-lg;
+        h3 {
+            @apply uppercase text-[6rem] text-right font-italiana -mr-xxl text-secondary;
+
+            &::before {
+                @apply bg-primary h-lg top-rg shadow-sm;
+            }
+        }
+        > div {
+            @apply flex flex-col;
+
+            article {
+                @apply flex gap-xl items-center max-w-[50%];
+                > div {
+                    @apply bg-primary h-[30vh] w-[30vh] rounded-full flex justify-center items-center shadow-sm;
+
+                    img {
+                        @apply h-[15vh];
+                    }
+                }
+                ul {
+                    @apply list-image-[url('/list-custom-marker.png')] leading-7;
+                    li {
+                        @apply pl-xs
+                    }
+                }
+
+                &:last-of-type {
+                    @apply self-end -mt-[15vh];
+                }
+            }
+        }
+    }
+</style>
