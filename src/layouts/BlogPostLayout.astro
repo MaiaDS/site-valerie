@@ -8,9 +8,8 @@ type Props = CollectionEntry<'blog'>['data'];
 const { title, description, publishedDate, updatedDate, mainImage } = Astro.props;
 ---
 
-<Layout title={title} description={description} classname="pt-0">
+<Layout title={title} description={description} classname="pt-0" headerImage={mainImage}>
     <hgroup class="header">
-        {mainImage && <img width={1020} height={510} src={mainImage} alt="" />}
         <h1>{title}</h1>
         <span>
             <FormattedDate date={publishedDate} />
@@ -29,15 +28,15 @@ const { title, description, publishedDate, updatedDate, mainImage } = Astro.prop
 </Layout>
 
 <style>
-    .header, .content {
-        @apply w-10/12 m-auto;
-    }
-
     .header {
-        @apply text-center border-b-[0.5px] border-b-secondary pb-md mb-xl;
+        @apply text-center border-b-[0.5px] border-b-secondary pb-md mb-xl py-lg;
         > img {
             @apply shadow-md w-full rounded-lg mb-md;
         }
+    }
+
+    .content {
+        @apply w-10/12 m-auto;
     }
 
     @media (max-width: 720px) {
