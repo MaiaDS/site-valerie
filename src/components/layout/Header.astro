@@ -1,5 +1,4 @@
 ---
-import Logo from './Logo.astro';
 import NavLink from './NavLink.astro';
 
 const { image } = Astro.props;
@@ -7,9 +6,10 @@ const { image } = Astro.props;
 
 <header>
 	<nav>
-        <NavLink href="/"><Logo classes='scale-[200%] mr-xs'/>Accueil</NavLink>
+        <NavLink href="/">Accueil</NavLink>
         <NavLink href="/blog">Blog</NavLink>
         <NavLink href="/about">À propos</NavLink>
+        <NavLink href="/contact">Contact</NavLink>
 	</nav>
     {image && (<img src={image} alt="" />)}
 </header>

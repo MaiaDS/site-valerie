@@ -1,0 +1,44 @@
+---
+import {EmailIco, InstagramIco} from '../../utils/ico';
+const today = new Date();
+---
+
+<footer>
+	<div class="social-links">
+		<a href="" target="_blank">
+			<span class="sr-only">suivez moi sur instagram</span>
+            <InstagramIco/>
+            <span>Instagram</span>
+		</a>
+		<a href="" target="_blank">
+			<span class="sr-only">contactez-moi par email</span>
+			<EmailIco/>
+            <span>Email</span>
+		</a>
+	</div>
+    &copy; {today.getFullYear()} Valérie Da Silva. Tous droits réservés.
+</footer>
+
+<style>
+	footer {
+        @apply px-lg py-md bg-primary text-center;
+		.social-links {
+            @apply flex items-center justify-center gap-md mb-rg;
+            a {
+                @apply flex gap-sm items-center;
+                svg {
+                    @apply w-auto h-md;
+                }
+                &:hover svg {
+                    path {
+                        @apply stroke-accent;
+                    }
+                    circle {
+                        @apply fill-accent;
+                    }
+                }
+            }
+          
+	    }
+	}
+</style>

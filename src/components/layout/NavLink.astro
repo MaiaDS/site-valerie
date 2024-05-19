@@ -1,5 +1,6 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import Logo from '../Logo.astro';
 
 type Props = HTMLAttributes<'a'>;
 
@@ -11,18 +12,22 @@ const isActive = href === pathname || href === '/' + subpath?.[0];
 ---
 
 <a href={href} class:list={[className, { active: isActive }]} {...props}>
+    {isActive && <Logo />}
 	<slot />
 </a>
 
 <style>
 	a {
-        @apply inline-block text-black font-bold uppercase flex gap-xs items-center;
+        @apply text-black font-bold uppercase flex gap-xs items-center;
 
         &:hover, &.active {
             @apply text-accent;
 
-            svg path {
-                @apply fill-accent;
+            svg {
+                @apply scale-[200%] mr-xs;
+                path {
+                    @apply fill-accent;
+                }
             }
         }
 	}
