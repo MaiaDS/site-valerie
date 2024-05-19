@@ -7,22 +7,25 @@ import Layout from '../layouts/Layout.astro';
 <Layout
 	title={SITE_TITLE}
 	description={SITE_DESCRIPTION}
+    classes="py-0"
 >
-    <hgroup class="background">
-        <Logo classes="w-[25vw] h-auto"/>
-        <h1>{SITE_TITLE}</h1>
-        <h2 class="-mt-sm">{SITE_DESCRIPTION}</h2>
-    </hgroup>
+    <div class="relative background">
+        <hgroup class="pt-lg">
+            <Logo/>
+            <h1>{SITE_TITLE}</h1>
+            <h2 class="-mt-sm">{SITE_DESCRIPTION}</h2>
+        </hgroup>
 
-    <section class="flex flex-col gap-sm py-xl">
-        <p>On passe tous, une fois dans sa vie de couple, un cap difficile à surmonter.</p>
-        <p>Que ce soit pour raviver la flamme, apprendre à mieux communiquer ou encore se séparer sans se déchirer. Je serais une aide bienveillante et professionnelle pour vous permettre d’aborder vos difficultés en trouvant une solution axé sur le présent vers le futur en mode action.</p>
-        <p>Je propose un accompagnement pour trouver les clés,qui permettront de comprendre vos comportements et créer de nouvelles habitudes positives</p>
-        <p>Mes domaines d’intervention vont des conflits affectifs aux mésententes ou des conflits relationnels aux problèmes sexuels.</p>
-    </section>
+        <section class="flex flex-col gap-sm py-xl">
+            <p>On passe tous, une fois dans sa vie de couple, un cap difficile à surmonter.</p>
+            <p>Que ce soit pour raviver la flamme, apprendre à mieux communiquer ou encore se séparer sans se déchirer. Je serais une aide bienveillante et professionnelle pour vous permettre d’aborder vos difficultés en trouvant une solution axé sur le présent vers le futur en mode action.</p>
+            <p>Je propose un accompagnement pour trouver les clés,qui permettront de comprendre vos comportements et créer de nouvelles habitudes positives</p>
+            <p>Mes domaines d’intervention vont des conflits affectifs aux mésententes ou des conflits relationnels aux problèmes sexuels.</p>
+        </section>
+    </div>
 
     <section class="services">
-        <h3 class="background">Mes services</h3>
+        <h3>Mes services</h3>
         <div>
             <article>
                 <div>
@@ -57,21 +60,22 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
+
+    div.background::before {
+        @apply bg-primary h-[112%];
+    }
     hgroup {
         @apply m-auto flex flex-col gap-xs items-center relative;
-        &::before {
-            @apply bg-primary h-[40%] -top-lg ;
+
+        > svg {
+            @apply w-[25vw] h-auto;
         }
     }
 
     .services {
-        @apply relative pb-lg;
+        @apply pb-lg;
         h3 {
             @apply uppercase text-[6rem] text-right font-italiana -mr-xxl text-secondary;
-
-            &::before {
-                @apply bg-primary h-lg top-rg shadow-sm;
-            }
         }
         > div {
             @apply flex flex-col;
