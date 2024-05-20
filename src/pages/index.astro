@@ -1,59 +1,55 @@
 ---
+import { PortableText } from 'astro-portabletext';
+import { getHomepage } from '../api/api';
 import Logo from '../components/Logo.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import Layout from '../layouts/Layout.astro';
+import { getImageSrc } from '../utils/functions';
+
+const post = await getHomepage();
+const { title, subtitle, introduction, services } = post;
+
 ---
 
 <Layout
-	title={SITE_TITLE}
-	description={SITE_DESCRIPTION}
+	title={title}
+	description={subtitle}
     classes="py-0"
 >
     <div class="relative background">
         <hgroup class="pt-lg">
             <Logo/>
-            <h1>{SITE_TITLE}</h1>
-            <h2 class="-mt-sm">{SITE_DESCRIPTION}</h2>
+            <h1>{title}</h1>
+            <h2 class="-mt-sm">{subtitle}</h2>
         </hgroup>
 
         <section class="flex flex-col gap-sm py-xl">
-            <p>On passe tous, une fois dans sa vie de couple, un cap difficile à surmonter.</p>
-            <p>Que ce soit pour raviver la flamme, apprendre à mieux communiquer ou encore se séparer sans se déchirer. Je serais une aide bienveillante et professionnelle pour vous permettre d’aborder vos difficultés en trouvant une solution axé sur le présent vers le futur en mode action.</p>
-            <p>Je propose un accompagnement pour trouver les clés,qui permettront de comprendre vos comportements et créer de nouvelles habitudes positives</p>
-            <p>Mes domaines d’intervention vont des conflits affectifs aux mésententes ou des conflits relationnels aux problèmes sexuels.</p>
+            <PortableText value={introduction} />
         </section>
     </div>
 
     <section class="services">
         <h3>Mes services</h3>
-        <div>
-            <article>
+        {
+            services.length > 0 && (
                 <div>
-                    <img src={'/couple-illustration.png'} alt="couple illustration" />
+                    {
+                        services.map((service) => {
+                            <article>
+                                <div>
+                                    <img src={getImageSrc(service.image)} alt="" />
+                                </div>
+                                <ul>
+                                    {
+                                        service.items.map(item => <li>{item}</li>)
+                                    }
+                                </ul>
+                            </article>
+                        })
+                    }
                 </div>
-                <ul>
-                    <li>Infidélité</li>
-                    <li>Jalousie</li>
-                    <li>Routine</li>
-                    <li>Besoins sexuels</li>
-                    <li>Manque de désir</li>
-                    <li>Gestion des conflits</li>
-                    <li>Apprendre a mieux communiquer</li>
-                </ul>
-            </article>
-
-            <article>
-                <div>
-                    <img src={'/single-illustration.png'} alt="couple illustration" />
-                </div>
-                <ul>
-                    <li>Confiance en soi</li>
-                    <li>S’exprimer librement</li>
-                    <li>Dépendance affective</li>
-                    <li>Affiner la problématique du couple</li>
-                </ul>
-            </article>
-        </div>
+            )
+        }
+      
     </section>
 
     
