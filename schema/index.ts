@@ -1,4 +1,4 @@
-import consts from './consts'
+import consts from './settings'
 import pages, { homepage } from './pages'
 import post from './post'
 

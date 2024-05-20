@@ -6,6 +6,17 @@ export default defineType({
     type: 'document',
     fields: [
         defineField({
+            name: 'menus',
+            title: 'Menus',
+            type: 'object',
+            fields: [
+                { name: 'home', title: 'Accueil', type: 'string' },
+                { name: 'blog', title: 'Blog', type: 'string' },
+                { name: 'about', title: 'À props', type: 'string' },
+                { name: 'contact', title: 'Contact', type: 'string' },
+            ],
+        }),
+        defineField({
             name: 'instagram',
             title: 'Instagram',
             type: 'url',
