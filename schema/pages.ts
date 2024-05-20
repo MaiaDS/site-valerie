@@ -25,11 +25,6 @@ export const homepage = defineType({
             title: 'Sous-titre',
             type: 'string',
         }),
-        defineField({
-            name: 'introduction',
-            title: 'Introduction',
-            type: 'text',
-        }),
         {
             name: 'introduction',
             title: 'Introduction',
