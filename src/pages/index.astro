@@ -1,6 +1,6 @@
 ---
 import { PortableText } from 'astro-portabletext';
-import { getHomepage } from '../api/api';
+import { getHomepage } from '../api/getPages';
 import Logo from '../components/Logo.astro';
 import Layout from '../layouts/Layout.astro';
 import { getImageSrc } from '../utils/functions';
@@ -28,15 +28,15 @@ const { title, subtitle, introduction, services } = post;
     </div>
 
     <section class="services">
-        <h3>Mes services</h3>
+        <h3>{services.title}</h3>
         {
-            services.length > 0 && (
+            services.content.length > 0 && (
                 <div>
                     {
-                        services.map((service) => {
+                        services.content.map((service) => (
                             <article>
                                 <div>
-                                    <img src={getImageSrc(service.image)} alt="" />
+                                    <img src={getImageSrc(service.serviceImg)} alt="" />
                                 </div>
                                 <ul>
                                     {
@@ -44,7 +44,7 @@ const { title, subtitle, introduction, services } = post;
                                     }
                                 </ul>
                             </article>
-                        })
+                        ))
                     }
                 </div>
             )
