@@ -2,7 +2,7 @@
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Layout from '../../layouts/Layout.astro';
-import { getPosts } from '../../utils/api';
+import { getPosts } from '../../api/getPosts';
 import { getImageSrc } from '../../utils/functions';
 
 const posts = await getPosts();
