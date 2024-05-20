@@ -51,21 +51,33 @@ export const homepage = defineType({
         defineField({
             name: 'services',
             title: 'Services',
-            type: 'array',
-            of: [
+            type: 'object',
+            fields: [
                 {
-                    name: 'service',
-                    type: 'object',
-                    fields: [
+                    name: 'title',
+                    type: 'string',
+                    title: 'Titre',
+                },
+                {
+                    name: 'content',
+                    title: 'Contenu',
+                    type: 'array',
+                    of: [
                         {
-                            type: 'image',
-                            name: 'image',
-                        },
-                        {
-                            type: 'array',
-                            name: 'items',
-                            title: 'Liste',
-                            of: [{ type: 'string' }],
+                            name: 'service',
+                            type: 'object',
+                            fields: [
+                                {
+                                    type: 'image',
+                                    name: 'serviceImg',
+                                },
+                                {
+                                    type: 'array',
+                                    name: 'items',
+                                    title: 'Liste',
+                                    of: [{ type: 'string' }],
+                                },
+                            ],
                         },
                     ],
                 },

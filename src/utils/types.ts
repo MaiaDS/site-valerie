@@ -38,7 +38,10 @@ export interface Homepage extends PageBaseAttributes {
 
     subtitle?: string
     introduction: PortableTextBlock[]
-    services: { image: ImageAsset; items: string[] }[]
+    services: {
+        title: string
+        content: { serviceImg: ImageAsset; items: string[] }[]
+    }
 }
 
 export interface Settings {
