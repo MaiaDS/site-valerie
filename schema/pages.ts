@@ -3,11 +3,6 @@ import { contentBlock, wysiwyg } from './blocks'
 
 const headerFields = [
     defineField({
-        name: 'menu',
-        title: 'Titre du menu',
-        type: 'string',
-    }),
-    defineField({
         name: 'title',
         title: 'Titre de la page',
         type: 'string',
@@ -59,13 +54,17 @@ export const homepage = defineType({
             type: 'array',
             of: [
                 {
-                    title: 'Liste',
                     name: 'service',
                     type: 'object',
                     fields: [
                         {
+                            type: 'image',
+                            name: 'image',
+                        },
+                        {
                             type: 'array',
-                            name: 'list',
+                            name: 'items',
+                            title: 'Liste',
                             of: [{ type: 'string' }],
                         },
                     ],
@@ -81,17 +80,6 @@ export default defineType({
     type: 'document',
     fields: [
         ...headerFields,
-        defineField({
-            name: 'slug',
-            title: 'Slug',
-            type: 'slug',
-            description:
-                "Nom utilisé dans l'URL, par exemple blog/slug. Il est recommandé de le générer automatiquement.",
-            options: {
-                source: 'menu',
-                maxLength: 96,
-            },
-        }),
         defineField({
             name: 'headerImg',
             title: "Image d'en-tête",
