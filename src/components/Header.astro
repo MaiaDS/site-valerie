@@ -1,0 +1,45 @@
+---
+import NavLink from './NavLink.astro';
+import {getSettings} from '../api/getSettings'
+import { getImageSrc } from '../utils/functions';
+
+const { menus } = await getSettings()
+
+const getActiveRouteHeader = () => {
+    const { pathname } = Astro.url
+    console.log(pathname)
+    switch(pathname) {
+        case '/about' :
+            return getImageSrc(menus.about.header)
+        case '/contact':
+        return getImageSrc(menus.contact.header)
+        default:
+            return undefined
+    }
+}
+
+const header = getActiveRouteHeader()
+
+---
+
+<header>
+	<nav>
+        <NavLink href="/">{menus.home}</NavLink>
+        <NavLink href="/blog">{menus.blog}</NavLink>
+        <NavLink href="/about">{menus.about.menu}</NavLink>
+        <NavLink href="/contact">{menus.contact.menu}</NavLink>
+	</nav>
+    {header && (<img src={header} alt="image d'en-tête" />)}
+</header>
+
+<style>
+	header {
+        nav {
+            @apply w-full flex items-center gap-md justify-center py-lg shadow-sm z-20;
+        }
+
+        > img {
+            @apply w-full h-[40vh] object-cover shadow-md;
+        }
+	}
+</style>

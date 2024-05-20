@@ -1,10 +1,13 @@
 ---
+import { getPage } from '../api/getPages';
 import Layout from '../layouts/Layout.astro';
+import { getImageSrc } from '../utils/functions';
+
+const { title, content } = await getPage('contact');
 ---
 
 <Layout
-	title="Contactez-moi"
-	headerImg="/blog-placeholder-about.jpg"
+	title={title}
 >
     // to be determined
 </Layout>

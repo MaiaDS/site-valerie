@@ -16,7 +16,7 @@ const posts = await getPosts();
             posts.map((post) => (
                 <li>
                     <a href={`/blog/${post.slug.current}`}>
-                        <img src={getImageSrc(post.mainImage)} alt="" class="rounded-lg w-full h-[40vh] object-cover bg-primary" />
+                        <img src={getImageSrc(post.header)} alt="" class="rounded-lg w-full h-[40vh] object-cover bg-primary" />
                         <hgroup>
                             <h3 class="text-h4 font-italiana uppercase">{post.title}</h3>
                             {<FormattedDate date={post.updatedDate ?? post.publishedDate} />}

@@ -15,11 +15,11 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params;
 const post = await getPost(slug);
-const { title, description, mainImage, publishedDate, updatedDate, body } = post;
+const { title, header, tags, publishedDate, updatedDate, content } = post;
 
 ---
 
-<Layout title={title} description={description} classes="pt-0" headerImg={getImageSrc(mainImage) }>
+<Layout title={title} classes="pt-0">
     <hgroup class="header">
         <h1>{title}</h1>
         {
@@ -36,9 +36,17 @@ const { title, description, mainImage, publishedDate, updatedDate, body } = post
                 </span>
             )
         }
+        {
+            tags.length > 0 && (
+                <ul>
+                    {tags.map(tag => <li>{tag}</li>)}
+                </ul>
+                
+            )
+        }
     </hgroup>
     <section class="content">
-        <PortableText value={body} />
+        <PortableText value={content} />
     </section>
 </Layout>
 
