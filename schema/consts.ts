@@ -1,22 +1,10 @@
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
-    name: 'consts',
-    title: 'Constantes',
+    name: 'settings',
+    title: 'Global',
     type: 'document',
     fields: [
-        // defineField({
-        //     name: 'logo',
-        //     title: 'Logo',
-        //     type: 'image',
-        // }),
-        // defineField({
-        //     name: 'favicon',
-        //     title: 'Favicon',
-        //     type: 'image',
-        //     description:
-        //         "Icône utilisée dans l'onglet du navigateur. L'image doit avoir une taille de 250x250 et être de format .svg ou .png.",
-        // }),
         defineField({
             name: 'instagram',
             title: 'Instagram',

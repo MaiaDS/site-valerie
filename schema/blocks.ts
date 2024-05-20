@@ -50,3 +50,24 @@ export const section = {
         },
     ],
 }
+
+export const contentBlock = defineField({
+    name: 'content',
+    title: 'Contenu',
+    type: 'array',
+    of: [
+        section,
+        {
+            title: 'Text + Image',
+            name: 'textImgBlock',
+            type: 'object',
+            fields: [
+                { name: 'blockImg', type: 'image', title: 'Image' },
+                { type: 'text', name: 'blockText', title: 'Text' },
+            ],
+        },
+        { type: 'image' },
+        { type: 'file' },
+        wysiwyg,
+    ],
+})

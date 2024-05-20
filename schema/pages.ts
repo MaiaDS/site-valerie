@@ -1,5 +1,5 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
-import { wysiwyg } from './blocks'
+import { contentBlock, wysiwyg } from './blocks'
 
 const headerFields = [
     defineField({
@@ -30,6 +30,34 @@ export const homepage = defineType({
             title: 'Introduction',
             type: 'text',
         }),
+        {
+            name: 'introduction',
+            title: 'Introduction',
+            type: 'array',
+            of: [
+                {
+                    type: 'block',
+                    styles: [{ title: 'Normal', value: 'normal' }],
+                    marks: {
+                        decorators: [{ title: 'Strong', value: 'strong' }],
+                        annotations: [
+                            {
+                                title: 'URL',
+                                name: 'link',
+                                type: 'object',
+                                fields: [
+                                    {
+                                        title: 'URL',
+                                        name: 'href',
+                                        type: 'url',
+                                    },
+                                ],
+                            },
+                        ],
+                    },
+                },
+            ],
+        },
     ],
 })
 
@@ -40,15 +68,21 @@ export default defineType({
     fields: [
         ...headerFields,
         defineField({
+            name: 'slug',
+            title: 'Slug',
+            type: 'slug',
+            description:
+                "Nom utilisé dans l'URL, par exemple blog/slug. Il est recommandé de le générer automatiquement.",
+            options: {
+                source: 'menu',
+                maxLength: 96,
+            },
+        }),
+        defineField({
             name: 'headerImg',
             title: "Image d'en-tête",
             type: 'image',
         }),
-        defineField({
-            title: 'Contenu',
-            name: 'content',
-            type: 'array',
-            of: [defineArrayMember(wysiwyg)],
-        }),
+        contentBlock,
     ],
 })
