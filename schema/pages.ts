@@ -1,5 +1,5 @@
-import { defineArrayMember, defineField, defineType } from 'sanity'
-import { contentBlock, wysiwyg } from './blocks'
+import { defineField, defineType } from 'sanity'
+import { contentBlock } from './blocks'
 
 const headerFields = [
     defineField({
@@ -93,9 +93,11 @@ export default defineType({
     fields: [
         ...headerFields,
         defineField({
-            name: 'headerImg',
-            title: "Image d'en-tête",
-            type: 'image',
+            name: 'slug',
+            title: 'Slug',
+            type: 'slug',
+            readOnly: true,
+            hidden: true,
         }),
         contentBlock,
     ],

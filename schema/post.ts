@@ -7,7 +7,7 @@ export default defineType({
     type: 'document',
     fields: [
         defineField({
-            name: 'headerImg',
+            name: 'header',
             title: "Image d'en-tête",
             type: 'image',
         }),
@@ -49,7 +49,7 @@ export default defineType({
     preview: {
         select: {
             title: 'title',
-            media: 'headerImg',
+            media: 'header',
         },
         prepare(selection) {
             return { ...selection }

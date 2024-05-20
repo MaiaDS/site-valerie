@@ -1,8 +1,17 @@
 import type { Slug, ImageAsset, PortableTextBlock } from 'sanity'
 
-export type TextImgBlock = { blockImg: ImageAsset; blockText: string }
-export type Content = TextImgBlock | ImageAsset | File | PortableTextBlock
+export type TextImgBlock = {
+    blockImg: ImageAsset
+    blockText: string
+}
+export type Content = { _type: string } & (
+    | TextImgBlock
+    | ImageAsset
+    | File
+    | PortableTextBlock
+)
 export type Section = {
+    _type: string
     title: string
     content: Content[]
 }
@@ -11,7 +20,7 @@ export interface Post {
     _type: 'post'
     _createdAt: string
 
-    headerImg?: ImageAsset
+    header?: ImageAsset
     title: string
     slug: Slug
     publishedDate: Date
@@ -29,7 +38,6 @@ export interface Page extends PageBaseAttributes {
     _type: 'page'
 
     slug: Slug
-    headerImg?: ImageAsset
     content: Content[]
 }
 
@@ -44,10 +52,12 @@ export interface Homepage extends PageBaseAttributes {
     }
 }
 
+type Menu = { menu: string; header: ImageAsset }
+
 export interface Settings {
     _type: 'settings'
 
-    menus: { home: string; blog: string; about: string; contact: string }
+    menus: { home: string; blog: string; about: Menu; contact: Menu }
     instagram: string
     email: string
 }

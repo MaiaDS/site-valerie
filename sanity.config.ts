@@ -4,7 +4,7 @@ import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schema'
 
 const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
-const singletonTypes = new Set(['homepage', 'settings'])
+const singletonTypes = new Set(['homepage', 'settings', 'page'])
 
 export default defineConfig({
     name: 'default',
@@ -20,7 +20,7 @@ export default defineConfig({
                     .title('Content')
                     .items([
                         S.listItem()
-                            .title('Global')
+                            .title('Settings')
                             .id('settings')
                             .child(
                                 S.document()
