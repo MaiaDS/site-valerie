@@ -22,7 +22,6 @@ export interface Post {
 
 interface PageBaseAttributes {
     _createdAt: string
-    menu: string
     title: string
 }
 
@@ -34,17 +33,18 @@ export interface Page extends PageBaseAttributes {
     content: Content[]
 }
 
-export interface Homepage {
+export interface Homepage extends PageBaseAttributes {
     _type: 'homepage'
 
     subtitle?: string
     introduction: PortableTextBlock[]
-    services: { service: { list: string[] } }[]
+    services: { image: ImageAsset; items: string[] }[]
 }
 
 export interface Settings {
     _type: 'settings'
 
+    menus: { home: string; blog: string; about: string; contact: string }
     instagram: string
     email: string
 }
