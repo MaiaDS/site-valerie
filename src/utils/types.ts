@@ -39,6 +39,7 @@ export interface Homepage {
 
     subtitle?: string
     introduction: PortableTextBlock[]
+    services: { service: { list: string[] } }[]
 }
 
 export interface Settings {
