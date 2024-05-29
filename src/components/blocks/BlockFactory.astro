@@ -1,0 +1,41 @@
+---
+import { ImageAsset } from '@sanity/types';
+import { getImageSrc } from '../../utils/functions';
+import { TextImgBlock, Section as SectionType} from '../../utils/types';
+import { PortableText } from 'astro-portabletext';
+import Section from './Section.astro';
+
+const { block } = Astro.props;
+---
+
+{
+    (() => {
+        switch (block._type) {
+            case 'textImgBlock':
+                const { blockImg, blockText } = block as TextImgBlock
+                return (
+                    <div class="flex gap-lg items-center">
+                        <img src={getImageSrc(blockImg as ImageAsset)} class="w-1/2 h-auto"/>
+                        <p>{blockText}</p>
+                    </div>
+                )
+            case 'image':
+                return <img src={getImageSrc(block as unknown as ImageAsset)} class="w-full h-auto"/>
+            case 'file':
+                return <div>file</div>
+            case 'section':
+                const { title, content } = block as SectionType
+                return (
+                    <Section title={title} content={content}/>
+                )
+            default:
+                return <PortableText value={block} />
+        }
+    })()
+}
+
+<style>
+
+   
+
+</style>

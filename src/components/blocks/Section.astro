@@ -1,0 +1,22 @@
+---
+import BlockFactory from './BlockFactory.astro';
+
+const { title, content } = Astro.props;
+---
+
+<section>
+    <h2>{title}</h2>
+    <div>{content.map((component) => <BlockFactory block={component}/>)}</div>
+</section>
+
+<style>
+	section {
+        @aaply w-full;
+        h3 {
+            @apply mb-md;
+        }
+        > div {
+            @apply w-full flex flex-col gap-sm;
+        }
+    }
+</style>
