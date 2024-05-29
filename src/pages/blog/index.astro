@@ -11,20 +11,24 @@ const posts = await getPosts();
 
 <Layout title={SITE_TITLE} description={SITE_DESCRIPTION} >
     <h1 class="sr-only">Blog</h1>
-    <ul class="articles">
         {
-            posts.map((post) => (
-                <li>
-                    <a href={`/blog/${post.slug.current}`}>
-                        <img src={getImageSrc(post.header)} alt="" class="rounded-lg w-full h-[40vh] object-cover bg-primary" />
-                        <hgroup>
-                            <h3 class="text-h4 font-italiana uppercase">{post.title}</h3>
-                            {<FormattedDate date={post.updatedDate ?? post.publishedDate} />}
-                        </hgroup>
-                        
-                    </a>
-                </li>
-            ))
+            posts.length === 0 ? 
+                <div>Aucun article publié pour le moment...</div> 
+            :  
+                <ul class="articles">
+                    { posts.map((post) => (
+                        <li>
+                            <a href={`/blog/${post.slug.current}`}>
+                                <img src={getImageSrc(post.header) ?? '/couple-illustration.png'} alt="" class={post.header ? 'object-cover': 'object-scale-down'} />
+                                <hgroup>
+                                    <h3 class="text-h4 font-italiana uppercase">{post.title}</h3>
+                                    {<FormattedDate date={post.updatedDate ?? post.publishedDate} />}
+                                </hgroup>
+                                
+                            </a>
+                        </li>
+                    ))}
+                </ul>
         }
     </ul>
 </Layout>
@@ -39,6 +43,10 @@ const posts = await getPosts();
                 * {
                     @apply transition-all block text-center;
                 }
+            }
+
+            img {
+                @apply rounded-lg w-full h-[40vh] bg-primary;
             }
             &:hover * {
                 @apply text-accent;
