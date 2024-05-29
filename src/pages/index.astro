@@ -4,8 +4,11 @@ import { getHomepage } from '../api/getPages';
 import Logo from '../components/Logo.astro';
 import Layout from '../layouts/Layout.astro';
 import { getImageSrc } from '../utils/functions';
+import { getSettings } from '../api/getSettings';
+import Title from '../components/Title.astro';
 
 const post = await getHomepage();
+const {price} = await getSettings();
 const { title, subtitle, introduction, services } = post;
 
 ---
@@ -18,7 +21,8 @@ const { title, subtitle, introduction, services } = post;
     <div class="relative background">
         <hgroup class="pt-lg">
             <Logo/>
-            <h1>{title}</h1>
+            <Title/>
+            <h1 class="hidden">{title}</h1>
             <h2 class="-mt-sm">{subtitle}</h2>
         </hgroup>
 
@@ -29,6 +33,7 @@ const { title, subtitle, introduction, services } = post;
 
     <section class="services">
         <h3>{services.title}</h3>
+        <h4>{ price } € la séance</h4>
         {
             services.content.length > 0 && (
                 <div>
@@ -64,14 +69,27 @@ const { title, subtitle, introduction, services } = post;
         @apply m-auto flex flex-col gap-xs items-center relative;
 
         > svg {
-            @apply w-[25vw] h-auto;
+            &:first-of-type {
+                @apply w-[25vw] h-auto;
+            }
+            &:last-of-type {
+                @apply w-[50vw] h-auto;
+            }
         }
     }
 
     .services {
         @apply pb-lg;
+
+        h3, h4 {
+            @apply text-right font-italiana -mr-xxl text-secondary;
+        }
         h3 {
-            @apply uppercase text-[6rem] text-right font-italiana -mr-xxl text-secondary;
+            @apply uppercase text-[6rem];
+        }
+
+        h4 {
+            @apply text-h1 -mt-md;
         }
         > div {
             @apply grid grid-cols-2 gap-xl;

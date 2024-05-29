@@ -59,5 +59,5 @@ export interface Settings {
 
     menus: { home: string; blog: string; about: Menu; contact: Menu }
     instagram: string
-    email: string
+    price: number
 }

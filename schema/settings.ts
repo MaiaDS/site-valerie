@@ -72,10 +72,9 @@ export default defineType({
             validation: (rule: any) => rule.required(),
         }),
         defineField({
-            name: 'email',
-            title: 'Adresse Email',
-            type: 'string',
-            description: 'Adresse email de contact type email@email.com',
+            name: 'price',
+            title: 'Prix de la séance',
+            type: 'number',
             validation: (rule: any) => rule.required(),
         }),
     ],
