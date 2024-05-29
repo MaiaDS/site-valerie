@@ -13,7 +13,7 @@ const { title, subtitle, introduction, services } = post;
 <Layout
 	title={title}
 	description={subtitle}
-    classes="py-0"
+    classes="pt-0"
 >
     <div class="relative background">
         <hgroup class="pt-lg">
@@ -74,10 +74,10 @@ const { title, subtitle, introduction, services } = post;
             @apply uppercase text-[6rem] text-right font-italiana -mr-xxl text-secondary;
         }
         > div {
-            @apply flex flex-col;
+            @apply grid grid-cols-2 gap-xl;
 
             article {
-                @apply flex gap-xl items-center max-w-[50%];
+                @apply flex gap-xl items-center;
                 > div {
                     @apply bg-primary h-[30vh] w-[30vh] rounded-full flex justify-center items-center shadow-sm;
 
@@ -92,8 +92,12 @@ const { title, subtitle, introduction, services } = post;
                     }
                 }
 
-                &:last-of-type {
-                    @apply self-end -mt-[15vh];
+                &:nth-child(odd):not(:first-of-type) {
+                    @apply -mt-[15vh];
+                }
+
+                &:nth-child(2) {
+                    @apply mt-[15vh];
                 }
             }
         }
