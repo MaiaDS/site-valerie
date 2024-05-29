@@ -2,8 +2,8 @@
 import FormattedDate from '../../components/FormattedDate.astro';
 import Layout from '../../layouts/Layout.astro';
 import {getPost, getPosts} from '../../api/getPosts'
-import { PortableText } from 'astro-portabletext'
 import { getImageSrc } from '../../utils/functions';
+import BlockFactory from '../../components/blocks/BlockFactory.astro';
 
 
 export async function getStaticPaths() {
@@ -17,10 +17,13 @@ const { slug } = Astro.params;
 const post = await getPost(slug);
 const { title, header, tags, publishedDate, updatedDate, content } = post;
 
+// console.log(content)
+
 ---
 
-<Layout title={title} classes="pt-0">
+<Layout title={title} classes="pt-0 pb-xl w-11/12 m-auto">
     <hgroup class="header">
+        {header && (<img src={getImageSrc(header)} alt="image d'en-tête" />)}
         <h1>{title}</h1>
         {
             publishedDate && (
@@ -38,15 +41,15 @@ const { title, header, tags, publishedDate, updatedDate, content } = post;
         }
         {
             tags.length > 0 && (
-                <ul>
-                    {tags.map(tag => <li>{tag}</li>)}
+                <ul class="flex justify-center gap-md mt-sm">
+                    {tags.map(tag => <li class="bg-primary rounded-sm shadow w-fit px-xs py-xxs">{tag}</li>)}
                 </ul>
                 
             )
         }
     </hgroup>
     <section class="content">
-        <PortableText value={content} />
+        { content.map(block => <BlockFactory block={block}/>)}
     </section>
 </Layout>
 
@@ -54,17 +57,28 @@ const { title, header, tags, publishedDate, updatedDate, content } = post;
     .header {
         @apply text-center border-b-[0.5px] border-b-secondary pb-md mb-xl py-lg;
         > img {
-            @apply shadow-md w-full rounded-lg mb-md;
+            @apply shadow-md w-full rounded-lg mb-md h-[40vh] object-cover;
         }
     }
 
     .content {
-        @apply w-10/12 m-auto;
+        @apply w-11/12 m-auto flex flex-col gap-md;
+
+        a {
+            @apply underline ;
+        }
+
+        ul {
+            @apply list-image-[url('/list-custom-marker.png')] leading-7 pl-md;
+            li {
+                @apply pl-xs
+            }
+        }
     }
 
     @media (max-width: 720px) {
         .header, .content {
-        @apply w-full;
-    }
+            @apply w-full;
+        }
     }
 </style>
