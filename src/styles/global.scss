@@ -33,9 +33,9 @@ h3 {
 }
 
 a {
-    @apply no-underline;
+    @apply no-underline cursor-pointer;
     &:hover {
-        @apply text-accent;
+        @apply text-accent underline;
     }
 }
 

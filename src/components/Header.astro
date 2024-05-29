@@ -7,7 +7,6 @@ const { menus } = await getSettings()
 
 const getActiveRouteHeader = () => {
     const { pathname } = Astro.url
-    console.log(pathname)
     switch(pathname) {
         case '/about' :
             return getImageSrc(menus.about.header)

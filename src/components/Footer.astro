@@ -9,12 +9,12 @@ const { instagram, email } = await getSettings()
 	<div class="social-links">
 		<a href={instagram} target="_blank">
 			<span class="sr-only">suivez moi sur instagram</span>
-            <InstagramIco/>
+            <span class="ico"><InstagramIco/></span>
             <span>Instagram</span>
 		</a>
 		<a href={email} target="_blank">
 			<span class="sr-only">contactez-moi par email</span>
-			<EmailIco/>
+			<span class="ico"><EmailIco/></span>
             <span>Email</span>
 		</a>
 	</div>
@@ -23,21 +23,26 @@ const { instagram, email } = await getSettings()
 
 <style>
 	footer {
-        @apply px-lg py-md bg-primary text-center;
+        @apply px-lg py-md bg-primary/50 text-center;
 		.social-links {
             @apply flex items-center justify-center gap-md mb-rg;
             a {
-                @apply flex gap-sm items-center;
-                svg {
-                    @apply w-auto h-md;
+                @apply flex gap-xs items-center;
+
+                .ico {
+                    @apply bg-black rounded-full w-lg h-lg flex justify-center items-center;
+                    svg {
+                        path {
+                            @apply stroke-white;
+                        }
+                        circle {
+                            @apply fill-white;
+                        }
+                    }
                 }
-                &:hover svg {
-                    path {
-                        @apply stroke-accent;
-                    }
-                    circle {
-                        @apply fill-accent;
-                    }
+               
+                &:hover .ico {
+                    @apply bg-accent;
                 }
             }
           
