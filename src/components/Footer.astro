@@ -1,8 +1,8 @@
 ---
 import { getSettings } from '../api/getSettings';
-import {EmailIco, InstagramIco} from '../utils/ico';
+import {InstagramIco} from '../utils/ico';
 const today = new Date();
-const { instagram, email } = await getSettings()
+const { instagram } = await getSettings()
 ---
 
 <footer>
@@ -11,11 +11,6 @@ const { instagram, email } = await getSettings()
 			<span class="sr-only">suivez moi sur instagram</span>
             <span class="ico"><InstagramIco/></span>
             <span>Instagram</span>
-		</a>
-		<a href={email} target="_blank">
-			<span class="sr-only">contactez-moi par email</span>
-			<span class="ico"><EmailIco/></span>
-            <span>Email</span>
 		</a>
 	</div>
     &copy; {today.getFullYear()} Valérie Da Silva. Tous droits réservés.
