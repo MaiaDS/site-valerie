@@ -15,6 +15,7 @@ export default defineType({
             name: 'title',
             title: 'Title',
             type: 'string',
+            validation: (rule: any) => rule.required(),
         }),
         defineField({
             name: 'slug',
@@ -26,16 +27,20 @@ export default defineType({
                 source: 'title',
                 maxLength: 96,
             },
+            validation: (rule: any) => rule.required(),
         }),
         defineField({
             name: 'publishedDate',
             title: 'Published at',
             type: 'date',
+            validation: (rule: any) => rule.required(),
         }),
         defineField({
             name: 'updatedDate',
             title: 'Updated at',
             type: 'date',
+            validation: (rule) =>
+                rule.required().min(rule.valueOfField('publishedDate')),
         }),
         defineField({
             name: 'tags',

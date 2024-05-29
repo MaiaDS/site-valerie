@@ -6,6 +6,7 @@ const headerFields = [
         name: 'title',
         title: 'Titre de la page',
         type: 'string',
+        validation: (rule: any) => rule.required(),
     }),
 ]
 

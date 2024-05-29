@@ -1,19 +1,19 @@
 import type { Slug, ImageAsset, PortableTextBlock } from 'sanity'
 
 export type TextImgBlock = {
+    _type: string
     blockImg: ImageAsset
     blockText: string
 }
-export type Content = { _type: string } & (
+export type ContentType =
     | TextImgBlock
     | ImageAsset
-    | File
+    | ({ _type: string } & File)
     | PortableTextBlock
-)
 export type Section = {
     _type: string
     title: string
-    content: Content[]
+    content: ContentType[]
 }
 
 export interface Post {
@@ -26,7 +26,7 @@ export interface Post {
     publishedDate: Date
     updatedDate?: Date
     tags: string[]
-    content: (Section | Content)[]
+    content: (Section | ContentType)[]
 }
 
 interface PageBaseAttributes {
@@ -38,7 +38,7 @@ export interface Page extends PageBaseAttributes {
     _type: 'page'
 
     slug: Slug
-    content: Content[]
+    content: ContentType[]
 }
 
 export interface Homepage extends PageBaseAttributes {

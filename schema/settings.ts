@@ -15,12 +15,14 @@ export default defineType({
                     title: 'Accueil',
                     type: 'string',
                     initialValue: 'Accueil',
+                    validation: (rule: any) => rule.required(),
                 },
                 {
                     name: 'blog',
                     title: 'Blog',
                     type: 'string',
                     initialValue: 'Blog',
+                    validation: (rule: any) => rule.required(),
                 },
                 {
                     name: 'about',
@@ -32,6 +34,7 @@ export default defineType({
                             title: 'Nom du menu',
                             type: 'string',
                             initialValue: 'À propos',
+                            validation: (rule: any) => rule.required(),
                         },
                         {
                             name: 'header',
@@ -50,6 +53,7 @@ export default defineType({
                             title: 'Nom du menu',
                             type: 'string',
                             initialValue: 'Contact',
+                            validation: (rule: any) => rule.required(),
                         },
                         {
                             name: 'header',
@@ -65,12 +69,14 @@ export default defineType({
             title: 'Instagram',
             type: 'url',
             description: 'Lien vers le compte isntagram',
+            validation: (rule: any) => rule.required(),
         }),
         defineField({
             name: 'email',
             title: 'Adresse Email',
             type: 'string',
             description: 'Adresse email de contact type email@email.com',
+            validation: (rule: any) => rule.required(),
         }),
     ],
 })
