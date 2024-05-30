@@ -23,10 +23,10 @@ const { title, subtitle, introduction, services } = post;
             <Logo/>
             <Title/>
             <h1 class="hidden">{title}</h1>
-            <h2 class="-mt-sm">{subtitle}</h2>
+            <h2 class="lg:-mt-sm text-center">{subtitle}</h2>
         </hgroup>
 
-        <section class="flex flex-col gap-sm py-xl">
+        <section class="flex flex-col gap-sm  py-lg lg:py-xl">
             <PortableText value={introduction} />
         </section>
     </div>
@@ -63,17 +63,17 @@ const { title, subtitle, introduction, services } = post;
 <style>
 
     div.background::before {
-        @apply bg-primary h-[112%];
+        @apply bg-primary h-[116%] lg:h-[112%];
     }
     hgroup {
         @apply m-auto flex flex-col gap-xs items-center relative;
 
         > svg {
             &:first-of-type {
-                @apply w-[25vw] h-auto;
+                @apply w-[50vw] lg:w-[25vw] h-auto;
             }
             &:last-of-type {
-                @apply w-[50vw] h-auto;
+                @apply w-[75vw] h-auto lg:w-[50vw];
             }
         }
     }
@@ -82,20 +82,20 @@ const { title, subtitle, introduction, services } = post;
         @apply pb-lg;
 
         h3, h4 {
-            @apply text-right font-italiana -mr-xxl text-secondary;
+            @apply text-right font-italiana -mr-lg lg:-mr-xxl text-secondary;
         }
         h3 {
-            @apply uppercase text-[6rem];
+            @apply uppercase text-[5rem] lg:text-[6rem] leading-[5rem] lg:leading-normal;
         }
 
         h4 {
-            @apply text-h1 -mt-md;
+            @apply text-h1 lg:-mt-md;
         }
         > div {
-            @apply grid grid-cols-2 gap-xl;
+            @apply flex flex-col gap-lg lg:grid lg:grid-cols-2 lg:gap-xl;
 
             article {
-                @apply flex gap-xl items-center;
+                @apply flex flex-col justify-center gap-md lg:flex-row lg:justify-start lg:gap-xl items-center;
                 > div {
                     @apply bg-primary h-[30vh] w-[30vh] rounded-full flex justify-center items-center shadow-sm;
 
@@ -111,11 +111,11 @@ const { title, subtitle, introduction, services } = post;
                 }
 
                 &:nth-child(odd):not(:first-of-type) {
-                    @apply -mt-[15vh];
+                    @apply lg:-mt-[15vh];
                 }
 
                 &:nth-child(2) {
-                    @apply mt-[15vh];
+                    @apply lg:mt-[15vh];
                 }
             }
         }

@@ -43,3 +43,80 @@ export const InstagramIco = () => {
         </svg>
     )
 }
+
+export const HomeIco = () => {
+    return (
+        <svg
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1 10.4545L9 1L17 10.4545M3.46154 7.54545V17H14.5385V7.54545"
+                className="stroke-black"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+        </svg>
+    )
+}
+
+export const BlogIco = () => {
+    return (
+        <svg
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M4.38462 7.76923C6.25388 7.76923 7.76923 6.25388 7.76923 4.38462C7.76923 2.51535 6.25388 1 4.38462 1C2.51535 1 1 2.51535 1 4.38462C1 6.25388 2.51535 7.76923 4.38462 7.76923Z"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                className="stroke-black"
+            />
+            <path
+                d="M13.6154 7.76923C15.4847 7.76923 17 6.25388 17 4.38462C17 2.51535 15.4847 1 13.6154 1C11.7461 1 10.2308 2.51535 10.2308 4.38462C10.2308 6.25388 11.7461 7.76923 13.6154 7.76923Z"
+                className="stroke-black"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+            <path
+                d="M4.38462 17C6.25388 17 7.76923 15.4847 7.76923 13.6154C7.76923 11.7461 6.25388 10.2308 4.38462 10.2308C2.51535 10.2308 1 11.7461 1 13.6154C1 15.4847 2.51535 17 4.38462 17Z"
+                className="stroke-black"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+            <path
+                d="M13.6154 17C15.4847 17 17 15.4847 17 13.6154C17 11.7461 15.4847 10.2308 13.6154 10.2308C11.7461 10.2308 10.2308 11.7461 10.2308 13.6154C10.2308 15.4847 11.7461 17 13.6154 17Z"
+                className="stroke-black"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+        </svg>
+    )
+}
+
+export const AboutIco = () => {
+    return (
+        <svg
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M11.9896 9.07183C11.2328 9.87627 10.5414 11.3223 14.1426 12.2176C15.8321 12.6377 16.5825 14.5716 16.8223 17H0.822266C1.32027 10.2496 3.79374 11.9835 5.17874 11.2034C5.5 11.0224 6.61922 9.77609 5.17874 8.88073C3.73826 7.98536 3.55343 4.90574 4.04358 3.64865C4.74816 1.84158 7.7537 -0.275791 11.3634 1.96982C14.9731 4.21543 13.5423 8.08086 11.9896 9.07183Z"
+                className="stroke-black"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+            />
+        </svg>
+    )
+}

@@ -24,7 +24,7 @@ const { title, content } = await getPage('contact');
 <style>
 
     h1 {
-        @apply mb-md;
+        @apply mb-md text-center lg:text-start;
     }
     section {
         @apply flex gap-lg;
@@ -36,7 +36,7 @@ const { title, content } = await getPage('contact');
     :global(form) {
         @apply flex flex-col gap-rg;
         fieldset {
-            @apply flex gap-sm w-full;
+            @apply flex flex-col gap-sm w-full lg:flex-row;
             div {
                 @apply flex-1;
             }

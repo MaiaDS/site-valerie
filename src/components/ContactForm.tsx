@@ -5,7 +5,7 @@ const ContactForm = () => {
     const handleSubmit = async (event: any) => {
         event.preventDefault()
         const formData = new FormData(event.target)
-        formData.append('access_key', 'YOUR_ACCESS_KEY_HERE')
+        formData.append('access_key', '78fe9bbb-9120-4087-aab4-e42063ca0e28')
 
         const response = await fetch('https://api.web3forms.com/submit', {
             method: 'POST',
@@ -95,25 +95,3 @@ const ContactForm = () => {
 }
 
 export default ContactForm
-
-// ---
-
-// <style>
-//   .invalid-feedback,
-//   .empty-feedback {
-//     display: none;
-//   }
-
-//   .was-validated :placeholder-shown:invalid ~ .empty-feedback {
-//     display: block;
-//   }
-
-//   .was-validated :not(:placeholder-shown):invalid ~ .invalid-feedback {
-//     display: block;
-//   }
-
-//   .is-invalid,
-//   .was-validated :invalid {
-//     border-color: #dc3545;
-//   }
-// </style>

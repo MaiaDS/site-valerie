@@ -33,6 +33,7 @@ export default {
             h3: ['2rem', { fontWeight: '700' }],
             h4: ['1.5rem', { fontWeight: '600' }],
             sm: ['0.75rem', { fontWeight: '400' }],
+            rg: ['1rem', { fontWeight: '400' }],
         },
     },
     plugins: [],

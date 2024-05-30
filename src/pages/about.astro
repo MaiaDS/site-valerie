@@ -10,7 +10,7 @@ const { title, content } = await getPage('about');
 
 <Layout
 	title={title}
-    classes="flex flex-col gap-sm justify-center w-10/12 m-auto py-xxl"
+    classes="flex flex-col gap-sm justify-center lg:w-10/12 m-auto lg:py-xxl"
 >
     <PortableText value={content} />
 </Layout>

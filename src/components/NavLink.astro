@@ -1,33 +1,45 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 import Logo from './Logo.astro';
+import { ComponentType } from 'react';
 
-type Props = HTMLAttributes<'a'>;
+type Props = HTMLAttributes<'a'> & {Ico?: ComponentType};
 
-const { href, class: className, ...props } = Astro.props;
+const { href, Ico, ...props } = Astro.props;
 
 const { pathname } = Astro.url;
 const subpath = pathname.match(/[^\/]+/g);
 const isActive = href === pathname || href === '/' + subpath?.[0];
 ---
 
-<a href={href} class:list={[className, { active: isActive }]} {...props}>
+<a href={href} class:list={[{ active: isActive }]} {...props}>
     {isActive && <Logo />}
+    <span class="ico">{Ico && <Ico />}</span>
 	<slot />
 </a>
 
 <style>
 	a {
-        @apply text-black font-bold uppercase flex gap-xs items-center;
+        @apply text-black font-bold text-sm lg:text-rg uppercase flex flex-col lg:flex-row gap-xs items-center flex-1 lg:flex-none;
 
+        .ico {
+            @apply bg-secondary rounded-full w-xl h-xl flex justify-center items-center lg:hidden;
+            svg path {
+                @apply stroke-white;
+            }
+        }
         &:hover, &.active {
             @apply text-accent;
 
-            svg {
-                @apply scale-[200%] mr-xs;
+            > svg {
+                @apply scale-[200%] mr-xs hidden lg:visible;
                 path {
                     @apply fill-accent;
                 }
+            }
+
+            .ico {
+                @apply bg-accent
             }
         }
 	}

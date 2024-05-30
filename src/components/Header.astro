@@ -1,7 +1,9 @@
 ---
-import NavLink from './NavLink.astro';
 import {getSettings} from '../api/getSettings'
 import { getImageSrc } from '../utils/functions';
+import { EmailIco } from '../utils/ico';
+import { AboutIco, BlogIco, HomeIco } from '../utils/ico';
+import NavLink from './NavLink.astro';
 
 const { menus } = await getSettings()
 
@@ -22,19 +24,19 @@ const header = getActiveRouteHeader()
 ---
 
 <header>
-	<nav>
-        <NavLink href="/">{menus.home}</NavLink>
-        <NavLink href="/blog">{menus.blog}</NavLink>
-        <NavLink href="/about">{menus.about.menu}</NavLink>
-        <NavLink href="/contact">{menus.contact.menu}</NavLink>
-	</nav>
+    <nav>
+        <NavLink href="/" Ico={HomeIco}>{menus.home}</NavLink>
+        <NavLink href="/blog" Ico={BlogIco}>{menus.blog}</NavLink>
+        <NavLink href="/about" Ico={AboutIco}>{menus.about.menu}</NavLink>
+        <NavLink href="/contact" Ico={EmailIco}>{menus.contact.menu}</NavLink>
+    </nav>
     {header && (<img src={header} alt="image d'en-tête" />)}
 </header>
 
 <style>
 	header {
         nav {
-            @apply w-full flex items-center gap-md justify-center py-lg shadow-sm z-20;
+            @apply w-full fixed bottom-0 bg-white lg:static flex items-center lg:justify-center lg:gap-md px-md pb-sm pt-md lg:py-lg shadow-xl lg:shadow-sm z-20  lg:px-0;
         }
 
         > img {

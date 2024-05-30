@@ -23,13 +23,13 @@ body {
 }
 
 h1 {
-    @apply text-h1 font-italiana uppercase tracking-widest;
+    @apply lg:text-h1 text-h2 font-italiana uppercase tracking-widest;
 }
 h2 {
-    @apply text-h2 font-italiana;
+    @apply lg:text-h2 text-h4 font-italiana;
 }
 h3 {
-    @apply text-h3;
+    @apply lg:text-h3 text-h4;
 }
 
 a {

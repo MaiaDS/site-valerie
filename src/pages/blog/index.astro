@@ -35,9 +35,9 @@ const posts = await getPosts();
 
 <style>
     .articles {
-        @apply flex flex-wrap gap-lg list-none;
+        @apply flex flex-col lg:grid lg:grid-cols-2 gap-lg list-none;
         > li {
-            width: calc(50% - 1rem);
+            /* width: calc(50% - 1rem); */
             a {
                 @apply flex flex-col gap-sm overflow-hidden;
                 * {
@@ -53,16 +53,6 @@ const posts = await getPosts();
             }
             &:hover img {
                 @apply shadow-lg scale-[101%];
-            }
-        }
-    }
-   
-    @media (max-width: 720px) {
-        .articles {
-            @apply gap-xs;
-
-            li {
-                @apply w-full;
             }
         }
     }
