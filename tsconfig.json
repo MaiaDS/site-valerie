@@ -1,0 +1,7 @@
+{
+    "extends": "astro/tsconfigs/strict",
+    "compilerOptions": {
+        "strictNullChecks": true
+    },
+    "include": ["**/*.ts", "**/*.tsx", "src/components/Navbar.tsx.old"]
+}

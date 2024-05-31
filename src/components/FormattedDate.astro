@@ -1,0 +1,8 @@
+---
+import {formatDate} from '../utils/functions'
+
+const { date } = Astro.props;
+const processedDate = typeof date === 'string' ? new Date(date) : date
+---
+
+<time datetime={processedDate.toISOString()}>{formatDate(processedDate)}</time>

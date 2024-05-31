@@ -1,0 +1,68 @@
+---
+import { getPage } from '../api/getPages';
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm'
+import BlockFactory from '../components/blocks/BlockFactory.astro';
+
+const { title, content } = await getPage('contact');
+---
+
+<Layout title={title}>
+    <h1>{title}</h1>
+    {
+        content ? 
+            <section>
+                <div class="flex-1 py-md">
+                    { content.map(block => <BlockFactory block={block}/>)}
+                </div>
+                <ContactForm/>
+            </section> 
+        : <ContactForm/>
+    }
+</Layout>
+
+<style>
+
+    h1 {
+        @apply mb-md text-center lg:text-start;
+    }
+    section {
+        @apply flex gap-lg;
+
+        > .contact-form {
+            @apply rounded-md shadow-xl bg-white p-md flex-1;
+        } 
+    }
+    :global(form) {
+        @apply flex flex-col gap-rg;
+        fieldset {
+            @apply flex flex-col gap-sm w-full lg:flex-row;
+            div {
+                @apply flex-1;
+            }
+        }
+
+        div {
+            @apply flex flex-col gap-xxs;
+
+            label {
+                @apply px-sm;
+                > span {
+                    @apply text-accent;
+                }
+            }
+
+            input, textarea {
+                @apply bg-white border-black border-[0.05rem] rounded-xl px-sm py-xs shadow;
+            }
+
+            textarea {
+                @apply min-h-[25vh];
+            }
+        }
+
+        button {
+            @apply bg-secondary text-white font-bold uppercase rounded-full py-xs mt-sm shadow-md hover:bg-accent hover:text-black transition-all; 
+        }
+    }
+</style>

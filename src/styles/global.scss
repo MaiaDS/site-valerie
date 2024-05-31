@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Italiana';
+    src: url('/fonts/Italiana-regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    @apply m-0 p-0 text-black min-h-[100vh] bg-white font-roboto overflow-x-hidden;
+}
+
+h1 {
+    @apply lg:text-h1 text-h2 font-italiana uppercase tracking-widest;
+}
+h2 {
+    @apply lg:text-h2 text-h4 font-italiana;
+}
+h3 {
+    @apply lg:text-h3 text-h4;
+}
+
+a {
+    @apply no-underline cursor-pointer;
+    &:hover {
+        @apply text-accent;
+    }
+}
+
+strong,
+b {
+    @apply font-bold;
+}
+
+.background::before {
+    @apply content-[''] block absolute w-[100vw] z-[-1] left-1/2 -translate-x-1/2;
+}

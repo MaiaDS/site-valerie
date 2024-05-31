@@ -1,0 +1,123 @@
+---
+import { PortableText } from 'astro-portabletext';
+import { getHomepage } from '../api/getPages';
+import Logo from '../components/Logo.astro';
+import Layout from '../layouts/Layout.astro';
+import { getImageSrc } from '../utils/functions';
+import { getSettings } from '../api/getSettings';
+import Title from '../components/Title.astro';
+
+const post = await getHomepage();
+const {price} = await getSettings();
+const { title, subtitle, introduction, services } = post;
+
+---
+
+<Layout
+	title={title}
+	description={subtitle}
+    classes="pt-0"
+>
+    <div class="relative background">
+        <hgroup class="pt-lg">
+            <Logo/>
+            <Title/>
+            <h1 class="hidden">{title}</h1>
+            <h2 class="lg:-mt-sm text-center">{subtitle}</h2>
+        </hgroup>
+
+        <section class="flex flex-col gap-sm  py-lg lg:py-xl">
+            <PortableText value={introduction} />
+        </section>
+    </div>
+
+    <section class="services">
+        <h3>{services.title}</h3>
+        <h4>{ price } € la séance</h4>
+        {
+            services.content.length > 0 && (
+                <div>
+                    {
+                        services.content.map((service) => (
+                            <article>
+                                <div>
+                                    <img src={getImageSrc(service.serviceImg)} alt="" />
+                                </div>
+                                <ul>
+                                    {
+                                        service.items.map(item => <li>{item}</li>)
+                                    }
+                                </ul>
+                            </article>
+                        ))
+                    }
+                </div>
+            )
+        }
+      
+    </section>
+
+    
+</Layout>
+
+<style>
+
+    div.background::before {
+        @apply bg-primary h-[116%] lg:h-[112%];
+    }
+    hgroup {
+        @apply m-auto flex flex-col gap-xs items-center relative;
+
+        > svg {
+            &:first-of-type {
+                @apply w-[50vw] lg:w-[25vw] h-auto;
+            }
+            &:last-of-type {
+                @apply w-[75vw] h-auto lg:w-[50vw];
+            }
+        }
+    }
+
+    .services {
+        @apply pb-lg;
+
+        h3, h4 {
+            @apply text-right font-italiana -mr-lg  text-secondary;
+        }
+        h3 {
+            @apply uppercase text-[5rem] lg:text-[6rem] leading-[5rem] lg:leading-normal lg:-mr-xxl;
+        }
+
+        h4 {
+            @apply text-h1 lg:-mt-md lg:-mr-[4rem];
+        }
+        > div {
+            @apply flex flex-col gap-lg lg:grid lg:grid-cols-2 lg:gap-xl;
+
+            article {
+                @apply flex flex-col justify-center gap-md lg:flex-row lg:justify-start lg:gap-xl items-center;
+                > div {
+                    @apply bg-primary h-[30vh] w-[30vh] rounded-full flex justify-center items-center shadow-sm;
+
+                    img {
+                        @apply h-[15vh];
+                    }
+                }
+                ul {
+                    @apply list-image-[url('/list-custom-marker.png')] leading-7;
+                    li {
+                        @apply pl-xs
+                    }
+                }
+
+                &:nth-child(odd):not(:first-of-type) {
+                    @apply lg:-mt-[15vh];
+                }
+
+                &:nth-child(2) {
+                    @apply lg:mt-[15vh];
+                }
+            }
+        }
+    }
+</style>
