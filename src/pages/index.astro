@@ -82,14 +82,14 @@ const { title, subtitle, introduction, services } = post;
         @apply pb-lg;
 
         h3, h4 {
-            @apply text-right font-italiana -mr-lg lg:-mr-xxl text-secondary;
+            @apply text-right font-italiana -mr-lg  text-secondary;
         }
         h3 {
-            @apply uppercase text-[5rem] lg:text-[6rem] leading-[5rem] lg:leading-normal;
+            @apply uppercase text-[5rem] lg:text-[6rem] leading-[5rem] lg:leading-normal lg:-mr-xxl;
         }
 
         h4 {
-            @apply text-h1 lg:-mt-md;
+            @apply text-h1 lg:-mt-md lg:-mr-[4rem];
         }
         > div {
             @apply flex flex-col gap-lg lg:grid lg:grid-cols-2 lg:gap-xl;
