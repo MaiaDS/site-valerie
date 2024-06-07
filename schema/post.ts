@@ -39,8 +39,7 @@ export default defineType({
             name: 'updatedDate',
             title: 'Updated at',
             type: 'date',
-            validation: (rule) =>
-                rule.required().min(rule.valueOfField('publishedDate')),
+            validation: (rule) => rule.min(rule.valueOfField('publishedDate')),
         }),
         defineField({
             name: 'tags',
