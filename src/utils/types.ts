@@ -3,7 +3,7 @@ import type { Slug, ImageAsset, PortableTextBlock } from 'sanity'
 export type TextImgBlock = {
     _type: string
     blockImg: ImageAsset
-    blockText: string
+    blockText: PortableTextBlock
 }
 export type ContentType =
     | TextImgBlock

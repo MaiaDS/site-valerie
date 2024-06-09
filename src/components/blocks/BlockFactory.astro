@@ -14,9 +14,9 @@ const { block } = Astro.props;
             case 'textImgBlock':
                 const { blockImg, blockText } = block as TextImgBlock
                 return (
-                    <div class="flex gap-lg items-center">
+                    <div class="flex flex-col lg:flex-row gap-lg items-center">
                         <img src={getImageSrc(blockImg as ImageAsset)} class="w-1/2 h-auto"/>
-                        <p>{blockText}</p>
+                        <PortableText value={blockText} />
                     </div>
                 )
             case 'image':
