@@ -2,6 +2,7 @@ import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schema'
+import { frFRLocale } from '@sanity/locale-fr-fr'
 
 const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
 const singletonTypes = new Set(['homepage', 'settings', 'page'])
@@ -17,10 +18,10 @@ export default defineConfig({
         structureTool({
             structure: (S) =>
                 S.list()
-                    .title('Content')
+                    .title('Contenu')
                     .items([
                         S.listItem()
-                            .title('Settings')
+                            .title('Global')
                             .id('settings')
                             .child(
                                 S.document()
@@ -41,6 +42,7 @@ export default defineConfig({
                     ]),
         }),
         visionTool(),
+        frFRLocale(),
     ],
 
     schema: {
