@@ -3,6 +3,7 @@ import { PortableText } from 'astro-portabletext';
 import { getPage } from '../api/getPages';
 import Layout from '../layouts/Layout.astro';
 import { getImageSrc } from '../utils/functions';
+import BlockFactory from '../components/blocks/BlockFactory.astro';
 
 const { title, content } = await getPage('about');
 
@@ -12,5 +13,5 @@ const { title, content } = await getPage('about');
 	title={title}
     classes="flex flex-col gap-sm justify-center lg:w-10/12 m-auto lg:py-xxl"
 >
-    <PortableText value={content} />
+    { content.map(block => <BlockFactory block={block}/>)}
 </Layout>

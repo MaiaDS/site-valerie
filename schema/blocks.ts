@@ -38,10 +38,32 @@ export const textImage = {
             validation: (rule: any) => rule.required(),
         },
         {
-            type: 'text',
             name: 'blockText',
-            title: 'Text',
-            validation: (rule: any) => rule.required(),
+            title: 'Texte',
+            type: 'array',
+            of: [
+                {
+                    type: 'block',
+                    styles: [{ title: 'Normal', value: 'normal' }],
+                    marks: {
+                        decorators: [{ title: 'Strong', value: 'strong' }],
+                        annotations: [
+                            {
+                                title: 'URL',
+                                name: 'link',
+                                type: 'object',
+                                fields: [
+                                    {
+                                        title: 'URL',
+                                        name: 'href',
+                                        type: 'url',
+                                    },
+                                ],
+                            },
+                        ],
+                    },
+                },
+            ],
         },
     ],
 }
