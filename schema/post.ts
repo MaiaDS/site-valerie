@@ -31,13 +31,13 @@ export default defineType({
         }),
         defineField({
             name: 'publishedDate',
-            title: 'Published at',
+            title: 'Date de publication',
             type: 'date',
             validation: (rule: any) => rule.required(),
         }),
         defineField({
             name: 'updatedDate',
-            title: 'Updated at',
+            title: "Date de modification (si mise à jour de l'article)",
             type: 'date',
             validation: (rule) => rule.min(rule.valueOfField('publishedDate')),
         }),
