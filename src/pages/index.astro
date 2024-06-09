@@ -63,7 +63,7 @@ const { title, subtitle, introduction, services } = post;
 <style>
 
     div.background::before {
-        @apply bg-primary h-[116%] lg:h-[112%];
+        @apply bg-primary h-[105%] lg:h-[112%];
     }
     hgroup {
         @apply m-auto flex flex-col gap-xs items-center relative;
@@ -82,17 +82,17 @@ const { title, subtitle, introduction, services } = post;
         @apply pb-lg;
 
         h3, h4 {
-            @apply text-right font-italiana -mr-lg  text-secondary;
+            @apply text-right font-italiana text-secondary break-words;
         }
         h3 {
-            @apply uppercase text-[5rem] lg:text-[6rem] leading-[5rem] lg:leading-normal lg:-mr-xxl;
+            @apply uppercase text-h2 lg:text-[5.5rem] leading-[3rem] lg:leading-normal lg:-mr-xxl;
         }
 
         h4 {
-            @apply text-h1 lg:-mt-md lg:-mr-[4rem];
+            @apply text-h3 lg:-mt-md lg:-mr-[4rem];
         }
         > div {
-            @apply flex flex-col gap-lg lg:grid lg:grid-cols-2 lg:gap-xl;
+            @apply flex flex-col gap-lg lg:grid lg:grid-cols-2 lg:gap-xl mt-lg lg:mt-0;
 
             article {
                 @apply flex flex-col justify-center gap-md lg:flex-row lg:justify-start lg:gap-xl items-center;
