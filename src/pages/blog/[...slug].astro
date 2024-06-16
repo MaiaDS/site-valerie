@@ -40,7 +40,7 @@ const { title, header, tags, publishedDate, updatedDate, content } = post;
             )
         }
         {
-            tags.length > 0 && (
+            tags?.length > 0 && (
                 <ul class="flex justify-center gap-md mt-sm">
                     {tags.map(tag => <li class="bg-primary rounded-sm shadow w-fit px-xs py-xxs">{tag}</li>)}
                 </ul>
