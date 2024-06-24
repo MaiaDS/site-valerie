@@ -1,0 +1,148 @@
+---
+---
+
+<form
+  action="https://api.web3forms.com/submit"
+  method="POST"
+  id="form"
+  class="needs-validation"
+  data-astro-reload
+  novalidate>
+  
+   <!-- Add your Web3Forms Access Key -->
+  <input type="hidden" name="access_key" value="78fe9bbb-9120-4087-aab4-e42063ca0e28" />
+  
+  <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
+  <div>
+    <label for="name">Nom<span>*</span></label>
+    <input
+      type="text"
+      placeholder="Nom"
+      required
+      class=""
+      name="name"
+      id="name"
+    />
+    <div class="empty-feedback invalid-feedback text-accent text-sm">
+      Merci de renseigner votre nom.
+    </div>
+  </div>
+  <div>
+    <label for="email_address">Email<span>*</span></label><input
+      id="email_address"
+      type="email"
+      placeholder="email@email.com"
+      name="email"
+      required
+      class=""
+    />
+    <div class="empty-feedback text-accent text-sm">
+      Merci de renseigner votre email.
+    </div>
+    <div class="invalid-feedback text-accent text-sm">
+      Merci de renseigner une adresse email valide.
+    </div>
+  </div>
+  <div>
+    <label for="subject">Sujet<span>*</span></label>
+    <input
+      type="text"
+      placeholder="Sujet du mail"
+      required
+      class=""
+      name="subject"
+      id="subject"
+    />
+    <div class="empty-feedback invalid-feedback text-accent text-sm">
+      Merci de renseigner un sujet.
+    </div>
+  </div>
+  <div>
+    <label for="message">Message<span>*</span></label>
+    <textarea
+    id="message"
+      name="message"
+      required
+      placeholder="Votre Message"
+      class=""
+    ></textarea>
+    <div class="empty-feedback invalid-feedback text-accent text-sm">
+      Merci de saisir un message.
+    </div>
+  </div>
+  <button type="submit">Envoyer</button>
+  <div id="result" class="text-center"></div>
+</form>
+
+<style>
+  .invalid-feedback,
+  .empty-feedback {
+    @apply hidden px-sm mt-xxs;
+  }
+
+  .was-validated :placeholder-shown:invalid ~ .empty-feedback, .was-validated :not(:placeholder-shown):invalid ~ .invalid-feedback {
+    @apply block;
+  }
+
+  .is-invalid,
+  .was-validated :invalid {
+    @apply border-accent;
+  }
+</style>
+
+<script is:inline>
+
+  // use astro:page-load event if you are using View Transitions
+  document.addEventListener("DOMContentLoaded", () => {
+  
+      const form = document.getElementById("form");
+      const result = document.getElementById("result");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        form.classList.add("was-validated");
+        if (!form.checkValidity()) {
+          form.querySelectorAll(":invalid")[0].focus();
+          return;
+        }
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        result.innerHTML = "Envoie en cours...";
+
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: json,
+        })
+          .then(async (response) => {
+            let json = await response.json();
+            if (response.status == 200) {
+              result.classList.add("text-secondary");
+              result.innerHTML = json.message;
+            } else {
+              console.log(response);
+              result.classList.add("text-accent");
+              result.innerHTML = json.message;
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+            result.innerHTML = "Une erreur est survenue !";
+          })
+          .then(function () {
+            form.reset();
+            form.classList.remove("was-validated");
+            setTimeout(() => {
+              result.style.display = "none";
+            }, 5000);
+          });
+      });
+    },
+    { once: true },
+  );
+</script>
