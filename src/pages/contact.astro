@@ -1,8 +1,8 @@
 ---
 import { getPage } from '../api/getPages';
 import Layout from '../layouts/Layout.astro';
-import ContactForm from '../components/ContactForm'
 import BlockFactory from '../components/blocks/BlockFactory.astro';
+import ContactForm from '../components/ContactForm.astro';
 
 const { title, content } = await getPage('contact');
 ---
@@ -29,18 +29,12 @@ const { title, content } = await getPage('contact');
     section {
         @apply flex gap-lg;
 
-        > .contact-form {
+        #form {
             @apply rounded-md shadow-xl bg-white p-md flex-1;
         } 
     }
     :global(form) {
         @apply flex flex-col gap-rg;
-        fieldset {
-            @apply flex flex-col gap-sm w-full lg:flex-row;
-            div {
-                @apply flex-1;
-            }
-        }
 
         div {
             @apply flex flex-col gap-xxs;
@@ -48,7 +42,7 @@ const { title, content } = await getPage('contact');
             label {
                 @apply px-sm;
                 > span {
-                    @apply text-accent;
+                    @apply text-accent ml-xxs;
                 }
             }
 
