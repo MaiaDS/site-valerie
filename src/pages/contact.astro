@@ -3,12 +3,15 @@ import { getPage } from '../api/getPages';
 import Layout from '../layouts/Layout.astro';
 import BlockFactory from '../components/blocks/BlockFactory.astro';
 import ContactForm from '../components/ContactForm.astro';
+import { getSettings } from '../api/getSettings';
 
 const { title, content } = await getPage('contact');
+const { phone  } = await getSettings();
 ---
 
-<Layout title={title}>
+<Layout title={title} classes="flex flex-col gap-md">
     <h1>{title}</h1>
+    <p>Par téléphone au : {phone} </br> Ou envoyez moi un mail avec le formulaire ci-dessous</p>
     {
         content ? 
             <section>
@@ -24,8 +27,9 @@ const { title, content } = await getPage('contact');
 <style>
 
     h1 {
-        @apply mb-md text-center lg:text-start;
+        @apply text-center lg:text-start;
     }
+    
     section {
         @apply flex gap-lg;
 

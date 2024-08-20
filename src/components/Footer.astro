@@ -2,7 +2,7 @@
 import { getSettings } from '../api/getSettings';
 import { InstagramIco } from '../utils/ico';
 const today = new Date();
-const { instagram } = await getSettings()
+const { instagram, phone } = await getSettings()
 ---
 
 <footer>
@@ -12,6 +12,16 @@ const { instagram } = await getSettings()
             <span class="ico"><InstagramIco/></span>
             <span>Instagram</span>
 		</a>
+        <a href={'/contact'}>
+			<span class="sr-only">envoyez-moi un email</span>
+            <span class="ico"><InstagramIco/></span>
+            <span>E-mail</span>
+		</a>
+        <div>
+			<span class="sr-only">contactez-moi par téléphone</span>
+            <span class="ico"><InstagramIco/></span>
+            <span>{phone}</span>
+		</div>
 	</div>
     &copy; {today.getFullYear()} Valérie Da Silva. Tous droits réservés.
 </footer>
@@ -21,7 +31,7 @@ const { instagram } = await getSettings()
         @apply px-lg py-md pb-[8.5rem] lg:pb-md bg-primary/50 text-center;
 		.social-links {
             @apply flex items-center justify-center gap-md mb-rg;
-            a {
+            a, > div {
                 @apply flex gap-xs items-center;
 
                 .ico {
@@ -38,6 +48,10 @@ const { instagram } = await getSettings()
                
                 &:hover .ico {
                     @apply bg-accent;
+                }
+
+                &:hover > span {
+                    @apply text-accent font-bold;
                 }
             }
           
