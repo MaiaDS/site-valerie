@@ -54,10 +54,14 @@ export interface Homepage extends PageBaseAttributes {
 
 type Menu = { menu: string; header: ImageAsset }
 
+export interface Menus {
+    _type: 'menus'
+    items: { home: string; blog: string; about: Menu; contact: Menu }
+}
+
 export interface Settings {
     _type: 'settings'
-
-    menus: { home: string; blog: string; about: Menu; contact: Menu }
     instagram: string
     price: number
+    phone: string
 }
