@@ -5,7 +5,7 @@ import { schemaTypes } from './schema'
 import { frFRLocale } from '@sanity/locale-fr-fr'
 
 const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
-const singletonTypes = new Set(['homepage', 'settings', 'page'])
+const singletonTypes = new Set(['homepage', 'menus', 'page', 'settings'])
 
 export default defineConfig({
     name: 'default',
@@ -27,6 +27,14 @@ export default defineConfig({
                                 S.document()
                                     .schemaType('settings')
                                     .documentId('settings'),
+                            ),
+                        S.listItem()
+                            .title('Menus')
+                            .id('menus')
+                            .child(
+                                S.document()
+                                    .schemaType('menus')
+                                    .documentId('menus'),
                             ),
                         S.listItem()
                             .title("Page d'accueil")
