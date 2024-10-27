@@ -1,6 +1,5 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import FormattedDate from '../../components/FormattedDate.astro';
+import FormattedDate from '../../components/blocks/FormattedDate.astro';
 import Layout from '../../layouts/Layout.astro';
 import { getPosts } from '../../api/getPosts';
 import { getImageSrc } from '../../utils/functions';
@@ -9,8 +8,9 @@ const posts = await getPosts();
 
 ---
 
-<Layout title={SITE_TITLE} description={SITE_DESCRIPTION} >
-    <h1 class="sr-only">Blog</h1>
+<Layout title={"Blog"} description={"Blog de Valérie Da Silva"} >
+    <main>
+        <h1 class="sr-only">Blog</h1>
         {
             posts.length === 0 ? 
                 <div>Aucun article publié pour le moment...</div> 
@@ -30,10 +30,13 @@ const posts = await getPosts();
                     ))}
                 </ul>
         }
-    </ul>
+    </main>
 </Layout>
 
 <style>
+    main {
+        @apply p-lg pt-sm;
+    }
     .articles {
         @apply flex flex-col lg:grid lg:grid-cols-2 gap-lg list-none;
         > li {

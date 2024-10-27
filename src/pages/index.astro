@@ -1,123 +1,42 @@
 ---
-import { PortableText } from 'astro-portabletext';
-import { getHomepage } from '../api/getPages';
-import Logo from '../components/Logo.astro';
-import Layout from '../layouts/Layout.astro';
-import { getImageSrc } from '../utils/functions';
 import { getSettings } from '../api/getSettings';
-import Title from '../components/Title.astro';
+import About from '../components/About.astro';
+import Contact from '../components/Contact.astro';
+import Header from '../components/Header.astro';
+import Services from '../components/Services.astro';
+import Why from '../components/Why.astro';
+import Layout from '../layouts/Layout.astro';
 
-const post = await getHomepage();
-const {price} = await getSettings();
-const { title, subtitle, introduction, services } = post;
+const { subtitle } = await getSettings();
 
 ---
 
-<Layout
-	title={title}
-	description={subtitle}
-    classes="pt-0"
->
-    <div class="relative background">
-        <hgroup class="pt-lg">
-            <Logo/>
-            <Title/>
-            <h1 class="hidden">{title}</h1>
-            <h2 class="lg:-mt-sm text-center">{subtitle}</h2>
-        </hgroup>
-
-        <section class="flex flex-col gap-sm  py-lg lg:py-xl">
-            <PortableText value={introduction} />
-        </section>
-    </div>
-
-    <section class="services">
-        <h3>{services.title}</h3>
-        <h4>{ price } € la séance</h4>
-        {
-            services.content.length > 0 && (
-                <div>
-                    {
-                        services.content.map((service) => (
-                            <article>
-                                <div>
-                                    <img src={getImageSrc(service.serviceImg)} alt="illustration décorative" />
-                                </div>
-                                <ul>
-                                    {
-                                        service.items.map(item => <li>{item}</li>)
-                                    }
-                                </ul>
-                            </article>
-                        ))
-                    }
-                </div>
-            )
-        }
-      
-    </section>
-
-    
+<Layout title="Valérie Da Silva" description={subtitle}>
+    <Header />
+    <main>
+        <Why/>
+        <Services/>
+        <About/>
+        <Contact/>
+    </main>
 </Layout>
 
 <style>
+	body {
+        @apply flex flex-col bg-white w-[100vw] overflow-x-hidden;
+        
+        main {
+            > section{
+                @apply pt-lg pb-xl w-10/12 mx-auto;
 
-    div.background::before {
-        @apply bg-primary h-[105%] lg:h-[112%];
-    }
-    hgroup {
-        @apply m-auto flex flex-col gap-xs items-center relative;
-
-        > svg {
-            &:first-of-type {
-                @apply w-[50vw] lg:w-[25vw] h-auto;
-            }
-            &:last-of-type {
-                @apply w-[75vw] h-auto lg:w-[50vw];
-            }
-        }
-    }
-
-    .services {
-        @apply pb-lg;
-
-        h3, h4 {
-            @apply text-right font-italiana text-secondary break-words;
-        }
-        h3 {
-            @apply uppercase text-h2 lg:text-[5.5rem] leading-[3rem] lg:leading-normal;
-        }
-
-        h4 {
-            @apply text-h3 lg:-mt-md;
-        }
-        > div {
-            @apply flex flex-col gap-lg lg:grid lg:grid-cols-2 lg:gap-xl mt-lg lg:mt-0;
-
-            article {
-                @apply flex flex-col justify-center gap-md lg:flex-row lg:justify-start lg:gap-xl items-center;
-                > div {
-                    @apply bg-primary h-[30vh] w-[30vh] rounded-full flex justify-center items-center shadow-sm;
-
-                    img {
-                        @apply h-[15vh];
-                    }
-                }
-                ul {
-                    @apply list-image-[url('/list-custom-marker.png')] leading-7;
-                    li {
-                        @apply pl-xs
-                    }
+                &:nth-child(odd) {
+                    @apply bg-primary w-full;
                 }
 
-                &:nth-child(odd):not(:first-of-type) {
-                    @apply lg:-mt-[15vh];
-                }
-
-                &:nth-child(2) {
-                    @apply lg:mt-[15vh];
+                h2 {
+                    @apply text-center mb-sm;
                 }
             }
         }
-    }
+	}
 </style>

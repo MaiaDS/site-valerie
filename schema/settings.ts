@@ -6,16 +6,16 @@ export default defineType({
     type: 'document',
     fields: [
         defineField({
-            name: 'instagram',
-            title: 'Instagram',
-            type: 'url',
-            description: 'Lien vers le compte isntagram',
+            name: 'subtitle',
+            title: 'Sous-titre',
+            type: 'string',
             validation: (rule: any) => rule.required(),
         }),
         defineField({
-            name: 'price',
-            title: 'Prix de la séance',
-            type: 'number',
+            name: 'instagram',
+            title: 'Instagram',
+            type: 'url',
+            description: 'Lien vers le compte instagram',
             validation: (rule: any) => rule.required(),
         }),
         defineField({

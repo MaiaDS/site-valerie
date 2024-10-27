@@ -1,0 +1,57 @@
+---
+import ContactForm from '../components/ContactForm.astro';
+import { getSettings } from '../api/getSettings';
+
+const { phone  } = await getSettings();
+---
+
+<section id="contact">
+    <h2>Contactez-moi</h2>
+    <h3>Pour <strong>plus d’information</strong> ou pour <strong>prendre rendez-vous</strong>.</h3>
+    <p>
+        Par téléphone au : {phone} </br> 
+        Ou envoyez moi un mail avec le formulaire ci-dessous
+    </p>
+    <ContactForm/>
+</section>
+
+<style>
+    section {
+        @apply pb-md w-8/12;
+
+        > h3, p {
+            @apply text-center;
+        }
+
+        h3 {
+            @apply text-rg mb-sm;
+        }
+
+        > form {
+            @apply flex flex-col gap-rg;
+
+            div {
+                @apply flex flex-col gap-xxs;
+
+                label {
+                    @apply px-sm;
+                    > span {
+                        @apply text-accent ml-xxs;
+                    }
+                }
+
+                input, textarea {
+                    @apply bg-white border-black border-[0.05rem] rounded-xl px-sm py-xs shadow;
+                }
+
+                textarea {
+                    @apply min-h-[25vh];
+                }
+            }
+
+            button {
+                @apply bg-secondary text-white font-bold uppercase rounded-full py-xs mt-sm shadow-md hover:bg-accent hover:text-black transition-all; 
+            }
+        }
+    }
+</style>

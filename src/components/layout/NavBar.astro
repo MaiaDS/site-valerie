@@ -1,0 +1,85 @@
+---
+import {getSettings} from '../../api/getSettings'
+import { EmailIco, InstagramIco } from '../../utils/ico';
+import { BlogIco, HomeIco } from '../../utils/ico';
+import NavLink from '../NavLink.astro';
+
+const { instagram } = await getSettings()
+
+---
+
+<nav>
+    <div>
+        <div>
+            <NavLink href="/" Ico={HomeIco}>A Propos</NavLink>
+            <NavLink href="/blog" Ico={BlogIco}>Blog</NavLink>
+            <NavLink href="#contact" Ico={EmailIco}>Contact</NavLink>
+        </div>
+       
+        <a href={instagram} target="_blank">
+            <span class="sr-only">suivez moi sur instagram</span>
+            <span class="ico"><InstagramIco/></span>
+            <span>Instagram</span>
+        </a>
+    </div>
+</nav>
+
+<style>
+
+    /* global */
+    nav { 
+        @apply w-full fixed h-[15vh] z-20;
+        
+        > div {
+            @apply bg-primary shadow-lg h-full w-full flex items-center 
+            justify-center gap-md;
+            > div {
+                @apply flex-1 flex justify-center items-center gap-md;
+            }
+        }
+    }
+
+    /* mobile specific */
+	nav { 
+        @apply bottom-0;
+
+        > div {
+            @apply px-md pb-sm pt-md;
+        }
+    }
+
+    /* desktop specific */
+    nav { 
+        @apply lg:p-md lg:bottom-[unset] lg:static;
+
+        > div {
+            @apply lg:rounded-xl lg:py-0 lg:px-md;
+            
+            > a {
+                @apply flex gap-xs items-center;
+
+                .ico {
+                    @apply bg-secondary rounded-full w-md h-md flex justify-center items-center;
+                    svg {
+                        @apply scale-75;
+                        
+                        path {
+                            @apply stroke-white;
+                        }
+                        circle {
+                            @apply fill-white;
+                        }
+                    }
+                }
+                
+                &:hover .ico {
+                    @apply bg-accent;
+                }
+
+                &:hover > span {
+                    @apply text-accent;
+                }
+            }
+        }
+    }
+</style>

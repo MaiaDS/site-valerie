@@ -1,0 +1,38 @@
+---
+import { PortableText } from 'astro-portabletext'
+import {getHomepage} from '../api/getPages'
+import { ImageAsset } from '@sanity/types';
+import { getImageSrc } from '../utils/functions';
+
+const { about } = await getHomepage()
+---
+
+<section>
+    <h2>{about.title}</h2>
+    <div>
+        <img src={getImageSrc(about.picture as unknown as ImageAsset)} alt="Photo de Valérie"/>
+        <div>
+            <PortableText value={about.content} />
+        </div>
+    </div>
+</section>
+
+<style>
+	section {
+        > div {
+            @apply flex justify-between items-center gap-xl w-10/12 mx-auto;
+
+            > img {
+                @apply rounded-full object-cover object-center h-[20vw] w-[20vw];
+            }
+
+            > div {
+                @apply flex gap-md flex-1;
+
+                > * {
+                    @apply flex-1
+                }
+            }
+        }
+    }
+</style>
