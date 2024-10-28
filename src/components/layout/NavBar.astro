@@ -10,17 +10,10 @@ const { instagram } = await getSettings()
 
 <nav>
     <div>
-        <div>
-            <NavLink href="/" Ico={HomeIco}>A Propos</NavLink>
-            <NavLink href="/blog" Ico={BlogIco}>Blog</NavLink>
-            <NavLink href="#contact" Ico={EmailIco}>Contact</NavLink>
-        </div>
-       
-        <a href={instagram} target="_blank">
-            <span class="sr-only">suivez moi sur instagram</span>
-            <span class="ico"><InstagramIco/></span>
-            <span>Instagram</span>
-        </a>
+        <NavLink href="/" Ico={HomeIco}>Accueil</NavLink>
+        <NavLink href="/blog" Ico={BlogIco}>Blog</NavLink>
+        <NavLink href="/#contact" Ico={EmailIco}>Contact</NavLink>
+        <NavLink href={instagram} Ico={InstagramIco} description="suivez moi sur instagram" class="insta">Instagram</NavLink>
     </div>
 </nav>
 
@@ -50,34 +43,30 @@ const { instagram } = await getSettings()
 
     /* desktop specific */
     nav { 
-        @apply lg:p-md lg:bottom-[unset] lg:static;
+        @apply lg:p-md lg:bottom-[unset] lg:static lg:relative;
 
         > div {
             @apply lg:rounded-xl lg:py-0 lg:px-md;
-            
-            > a {
-                @apply flex gap-xs items-center;
-
-                .ico {
-                    @apply bg-secondary rounded-full w-md h-md flex justify-center items-center;
-                    svg {
-                        @apply scale-75;
-                        
-                        path {
-                            @apply stroke-white;
-                        }
-                        circle {
-                            @apply fill-white;
+            @media (min-width: 720px) {
+                .insta {
+                    @apply absolute right-xl;
+                    .ico {
+                        @apply bg-secondary rounded-full w-md h-md flex justify-center items-center;
+                        svg {
+                            @apply scale-75;
+                            
+                            path {
+                                @apply stroke-white;
+                            }
+                            circle {
+                                @apply fill-white;
+                            }
                         }
                     }
-                }
-                
-                &:hover .ico {
-                    @apply bg-accent;
-                }
 
-                &:hover > span {
-                    @apply text-accent;
+                    &:hover .ico {
+                        @apply bg-accent;
+                    }
                 }
             }
         }

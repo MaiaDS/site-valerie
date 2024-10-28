@@ -22,21 +22,17 @@ const { subtitle } = await getSettings();
 </Layout>
 
 <style>
-	body {
-        @apply flex flex-col bg-white w-[100vw] overflow-x-hidden;
-        
-        main {
-            > section{
-                @apply pt-lg pb-xl w-10/12 mx-auto;
+    main {
+        > section{
+            @apply pt-lg pb-xl w-11/12 lg:w-10/12 mx-auto;
 
-                &:nth-child(odd) {
-                    @apply bg-primary w-full;
-                }
+            &:nth-child(odd) {
+                @apply bg-primary w-full;
+            }
 
-                h2 {
-                    @apply text-center mb-sm;
-                }
+            h2 {
+                @apply text-center mb-sm;
             }
         }
-	}
+    }
 </style>

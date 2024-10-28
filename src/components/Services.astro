@@ -26,16 +26,16 @@ const {title, items, price, duration} = services
 
 <style>
 	section {
-        @apply flex gap-xl;
+        @apply flex flex-col lg:flex-row justify-center lg:justify-between gap-xl;
 
         .illustrations {
-            @apply relative w-2/6 h-fit mb-[10vw];
+            @apply relative mx-auto lg:mx-0 w-1/2 lg:w-2/6 h-fit mb-[5vw] lg:mb-[10vw];
             > span {
-                @apply bg-primary rounded-full flex justify-center items-center
-                w-[18vw] h-[18vw] shadow-lg;
+                @apply bg-primary rounded-full flex justify-center items-center w-[25vw] h-[25vw]
+                lg:w-[18vw] lg:h-[18vw] shadow-lg;
 
                 > img {
-                    @apply scale-75;
+                    @apply scale-50 lg:scale-75;
                 }
 
                 &:last-of-type {
@@ -45,22 +45,22 @@ const {title, items, price, duration} = services
         }
 
         > article {
-            @apply flex-1 flex flex-col items-start relative;
+            @apply flex-1 flex flex-col items-center lg:items-start relative;
             > div {
                 ul {
-                    @apply pl-md list-image-[url('/list-custom-marker.png')] leading-7;
+                    @apply flex flex-col items-center lg:items-start pl-md list-image-[url('/list-custom-marker.png')] leading-7;
                     li {
                         @apply pl-xs
                     }
                 }
                 
                 > div {
-                    @apply absolute -bottom-xs -right-lg flex flex-col mt-lg;
+                    @apply lg:absolute -bottom-xs -right-lg flex flex-col items-center -mt-md lg:mt-lg;
                     h3 {
-                        @apply text-accent/75 text-[148pt] font-italiana -mb-xl;
+                        @apply text-accent/75 text-[100pt] text-center lg:text-[148pt] font-italiana -mb-lg lg:-mb-xl;
                     }
                     span {
-                        @apply text-h2 text-black/50 font-italiana pl-xs;
+                        @apply text-h3 lg:text-h2 text-black/50 font-italiana lg:pl-xs;
                     }
                 }
             }

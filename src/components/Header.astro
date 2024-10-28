@@ -6,15 +6,16 @@ const { subtitle } = await getSettings()
 
 <header>
     <h1>{subtitle}</h1>
-    <img class="illustration" src={'/illu-coach-v2.png'} alt="Signature Valérie Da Silva" />
-    <!-- <img src={'/signature.svg'} alt="Valérie Da Silva" /> -->
+    <img class="illustration hidden lg:block" src={'/illu-coach-v2.png'} alt="Signature Valérie Da Silva"/>
+    <img class="illustration lg:hidden" src={'/illu-coach.png'} alt="Signature Valérie Da Silva"/>
+    <img src={'/signature.svg'} alt="Valérie Da Silva" class="lg:hidden"/>
 </header>
 
 <style>
 	header {
-        @apply w-9/12 mx-auto h-[85vh] py-md flex flex-col justify-between;
+        @apply w-10/12 lg:w-9/12 mx-auto lg:h-[85vh] py-md flex flex-col justify-between;
         h1 {
-            @apply text-right z-10 -mb-[25vh];
+            @apply text-right z-10 -mb-[8vh] lg:-mb-[25vh];
         }
 
         .illustration {
