@@ -1,0 +1,22 @@
+---
+import { PortableText } from 'astro-portabletext'
+import {getHomepage} from '../api/getPages'
+
+const { introduction } = await getHomepage()
+
+---
+
+<section>
+    <h2>{introduction.title}</h2>
+    <div>
+        <PortableText value={introduction.content} />
+    </div>
+</section>
+
+<style>
+	section {
+        > div {
+            @apply w-10/12 lg:w-8/12 mx-auto flex flex-col gap-sm;
+        }
+    }
+</style>

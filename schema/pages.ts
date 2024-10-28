@@ -15,43 +15,10 @@ export const homepage = defineType({
     title: "Page d'Accueil",
     type: 'document',
     fields: [
-        ...headerFields,
+        // ...headerFields,
         defineField({
-            name: 'subtitle',
-            title: 'Sous-titre',
-            type: 'string',
-        }),
-        {
             name: 'introduction',
             title: 'Introduction',
-            type: 'array',
-            of: [
-                {
-                    type: 'block',
-                    styles: [{ title: 'Normal', value: 'normal' }],
-                    marks: {
-                        decorators: [{ title: 'Strong', value: 'strong' }],
-                        annotations: [
-                            {
-                                title: 'URL',
-                                name: 'link',
-                                type: 'object',
-                                fields: [
-                                    {
-                                        title: 'URL',
-                                        name: 'href',
-                                        type: 'url',
-                                    },
-                                ],
-                            },
-                        ],
-                    },
-                },
-            ],
-        },
-        defineField({
-            name: 'services',
-            title: 'Services',
             type: 'object',
             fields: [
                 {
@@ -65,20 +32,102 @@ export const homepage = defineType({
                     type: 'array',
                     of: [
                         {
-                            name: 'service',
-                            type: 'object',
-                            fields: [
-                                {
-                                    type: 'image',
-                                    name: 'serviceImg',
-                                },
-                                {
-                                    type: 'array',
-                                    name: 'items',
-                                    title: 'Liste',
-                                    of: [{ type: 'string' }],
-                                },
-                            ],
+                            type: 'block',
+                            styles: [{ title: 'Normal', value: 'normal' }],
+                            marks: {
+                                decorators: [
+                                    { title: 'Strong', value: 'strong' },
+                                ],
+                                annotations: [
+                                    {
+                                        title: 'URL',
+                                        name: 'link',
+                                        type: 'object',
+                                        fields: [
+                                            {
+                                                title: 'URL',
+                                                name: 'href',
+                                                type: 'url',
+                                            },
+                                        ],
+                                    },
+                                ],
+                            },
+                        },
+                    ],
+                },
+            ],
+        }),
+        defineField({
+            name: 'services',
+            title: 'Services',
+            type: 'object',
+            fields: [
+                {
+                    name: 'title',
+                    type: 'string',
+                    title: 'Titre',
+                },
+                {
+                    name: 'price',
+                    type: 'number',
+                    title: 'Prix de la séance',
+                },
+                {
+                    name: 'duration',
+                    type: 'string',
+                    title: 'Durée de la séance',
+                },
+                {
+                    type: 'array',
+                    name: 'items',
+                    title: 'Liste des services',
+                    of: [{ type: 'string' }],
+                },
+            ],
+        }),
+        defineField({
+            name: 'about',
+            title: 'A propos',
+            type: 'object',
+            fields: [
+                {
+                    name: 'title',
+                    type: 'string',
+                    title: 'Titre',
+                },
+                {
+                    name: 'picture',
+                    type: 'image',
+                    title: 'Photo',
+                },
+                {
+                    name: 'content',
+                    title: 'Contenu',
+                    type: 'array',
+                    of: [
+                        {
+                            type: 'block',
+                            styles: [{ title: 'Normal', value: 'normal' }],
+                            marks: {
+                                decorators: [
+                                    { title: 'Strong', value: 'strong' },
+                                ],
+                                annotations: [
+                                    {
+                                        title: 'URL',
+                                        name: 'link',
+                                        type: 'object',
+                                        fields: [
+                                            {
+                                                title: 'URL',
+                                                name: 'href',
+                                                type: 'url',
+                                            },
+                                        ],
+                                    },
+                                ],
+                            },
                         },
                     ],
                 },

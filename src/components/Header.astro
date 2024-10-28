@@ -1,46 +1,25 @@
 ---
-import {getMenus, getSettings} from '../api/getSettings'
-import { getImageSrc } from '../utils/functions';
-import { EmailIco } from '../utils/ico';
-import { AboutIco, BlogIco, HomeIco } from '../utils/ico';
-import NavLink from './NavLink.astro';
+import {getSettings} from '../api/getSettings'
 
-const { items } = await getMenus()
-
-const getActiveRouteHeader = () => {
-    const { pathname } = Astro.url
-    switch(pathname) {
-        case '/about' :
-            return getImageSrc(items.about.header)
-        case '/contact':
-        return getImageSrc(items.contact.header)
-        default:
-            return undefined
-    }
-}
-
-const header = getActiveRouteHeader()
-
+const { subtitle } = await getSettings()
 ---
 
 <header>
-    <nav>
-        <NavLink href="/" Ico={HomeIco}>{items.home}</NavLink>
-        <NavLink href="/blog" Ico={BlogIco}>{items.blog}</NavLink>
-        <NavLink href="/about" Ico={AboutIco}>{items.about.menu}</NavLink>
-        <NavLink href="/contact" Ico={EmailIco}>{items.contact.menu}</NavLink>
-    </nav>
-    {header && (<img src={header} alt="image d'en-tête" />)}
+    <h1>{subtitle}</h1>
+    <img class="illustration hidden lg:block" src={'/illu-coach-v2.png'} alt="Signature Valérie Da Silva"/>
+    <img class="illustration lg:hidden" src={'/illu-coach.png'} alt="Signature Valérie Da Silva"/>
+    <img src={'/signature.svg'} alt="Valérie Da Silva" class="lg:hidden"/>
 </header>
 
 <style>
 	header {
-        nav {
-            @apply w-full fixed bottom-0 bg-white lg:static flex items-center lg:justify-center lg:gap-md px-md pb-sm pt-md lg:py-lg shadow-xl lg:shadow-sm z-20  lg:px-0;
+        @apply w-10/12 lg:w-9/12 mx-auto lg:h-[85vh] py-md flex flex-col justify-between;
+        h1 {
+            @apply text-right z-10 -mb-[8vh] lg:-mb-[25vh];
         }
 
-        > img {
-            @apply w-full h-[40vh] object-cover shadow-md hidden lg:block;
+        .illustration {
+            @apply w-full -z-[1];
         }
 	}
 </style>

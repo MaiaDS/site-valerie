@@ -5,11 +5,13 @@ export type TextImgBlock = {
     blockImg: ImageAsset
     blockText: PortableTextBlock
 }
+
 export type ContentType =
     | TextImgBlock
     | ImageAsset
     | ({ _type: string } & File)
     | PortableTextBlock
+
 export type Section = {
     _type: string
     title: string
@@ -44,24 +46,26 @@ export interface Page extends PageBaseAttributes {
 export interface Homepage extends PageBaseAttributes {
     _type: 'homepage'
 
-    subtitle?: string
-    introduction: PortableTextBlock[]
+    introduction: {
+        title: string
+        content: PortableTextBlock[]
+    }
+    about: {
+        title: string
+        picture: ImageAsset
+        content: PortableTextBlock[]
+    }
     services: {
         title: string
-        content: { serviceImg: ImageAsset; items: string[] }[]
+        price: number
+        duration: string
+        items: string[]
     }
-}
-
-type Menu = { menu: string; header: ImageAsset }
-
-export interface Menus {
-    _type: 'menus'
-    items: { home: string; blog: string; about: Menu; contact: Menu }
 }
 
 export interface Settings {
     _type: 'settings'
     instagram: string
-    price: number
     phone: string
+    subtitle: string
 }

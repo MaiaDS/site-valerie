@@ -1,0 +1,74 @@
+---
+import {getSettings} from '../../api/getSettings'
+import { EmailIco, InstagramIco } from '../../utils/ico';
+import { BlogIco, HomeIco } from '../../utils/ico';
+import NavLink from '../NavLink.astro';
+
+const { instagram } = await getSettings()
+
+---
+
+<nav>
+    <div>
+        <NavLink href="/" Ico={HomeIco}>Accueil</NavLink>
+        <NavLink href="/blog" Ico={BlogIco}>Blog</NavLink>
+        <NavLink href="/#contact" Ico={EmailIco}>Contact</NavLink>
+        <NavLink href={instagram} Ico={InstagramIco} description="suivez moi sur instagram" class="insta">Instagram</NavLink>
+    </div>
+</nav>
+
+<style>
+
+    /* global */
+    nav { 
+        @apply w-full fixed h-[15vh] z-20;
+        
+        > div {
+            @apply bg-primary shadow-lg h-full w-full flex items-center 
+            justify-center gap-md;
+            > div {
+                @apply flex-1 flex justify-center items-center gap-md;
+            }
+        }
+    }
+
+    /* mobile specific */
+	nav { 
+        @apply bottom-0;
+
+        > div {
+            @apply px-md pb-sm pt-md;
+        }
+    }
+
+    /* desktop specific */
+    nav { 
+        @apply lg:p-md lg:bottom-[unset] lg:static lg:relative;
+
+        > div {
+            @apply lg:rounded-xl lg:py-0 lg:px-md;
+            @media (min-width: 720px) {
+                .insta {
+                    @apply absolute right-xl;
+                    .ico {
+                        @apply bg-secondary rounded-full w-md h-md flex justify-center items-center;
+                        svg {
+                            @apply scale-75;
+                            
+                            path {
+                                @apply stroke-white;
+                            }
+                            circle {
+                                @apply fill-white;
+                            }
+                        }
+                    }
+
+                    &:hover .ico {
+                        @apply bg-accent;
+                    }
+                }
+            }
+        }
+    }
+</style>

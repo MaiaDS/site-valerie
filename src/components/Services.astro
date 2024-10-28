@@ -1,0 +1,69 @@
+---
+import {getHomepage} from '../api/getPages'
+
+const { services } = await getHomepage()
+const {title, items, price, duration} = services
+---
+
+<section>
+    <div class="illustrations">
+        <span><img src="/illu-couple.png" alt="illustration couple"/></span>
+        <span><img src="/illu-solo.png" alt="illustration personne seule"/></span>
+    </div>
+    <article>
+        <h2>{title}</h2>
+        <div>
+            <ul>
+                {items.map(item => <li>{item}</li>)}
+            </ul>
+            <div>
+                <h3>{price}€</h3>
+                <span>la séance {duration}</span>
+            </div>
+        </div>
+    </article>
+</section>
+
+<style>
+	section {
+        @apply flex flex-col lg:flex-row justify-center lg:justify-between gap-xl;
+
+        .illustrations {
+            @apply relative mx-auto lg:mx-0 w-1/2 lg:w-2/6 h-fit mb-[5vw] lg:mb-[10vw];
+            > span {
+                @apply bg-primary rounded-full flex justify-center items-center w-[25vw] h-[25vw]
+                lg:w-[18vw] lg:h-[18vw] shadow-lg;
+
+                > img {
+                    @apply scale-50 lg:scale-75;
+                }
+
+                &:last-of-type {
+                    @apply absolute -bottom-[10vw] right-0 -z-[1];
+                }
+            }
+        }
+
+        > article {
+            @apply flex-1 flex flex-col items-center lg:items-start relative;
+            > div {
+                ul {
+                    @apply flex flex-col items-center lg:items-start pl-md list-image-[url('/list-custom-marker.png')] leading-7;
+                    li {
+                        @apply pl-xs
+                    }
+                }
+                
+                > div {
+                    @apply lg:absolute -bottom-xs -right-lg flex flex-col items-center -mt-md lg:mt-lg;
+                    h3 {
+                        @apply text-accent/75 text-[100pt] text-center lg:text-[148pt] font-italiana -mb-lg lg:-mb-xl;
+                    }
+                    span {
+                        @apply text-h3 lg:text-h2 text-black/50 font-italiana lg:pl-xs;
+                    }
+                }
+            }
+        }
+    }
+</style>

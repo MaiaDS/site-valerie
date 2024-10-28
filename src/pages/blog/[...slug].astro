@@ -1,5 +1,5 @@
 ---
-import FormattedDate from '../../components/FormattedDate.astro';
+import FormattedDate from '../../components/blocks/FormattedDate.astro';
 import Layout from '../../layouts/Layout.astro';
 import {getPost, getPosts} from '../../api/getPosts'
 import { getImageSrc } from '../../utils/functions';
@@ -17,67 +17,77 @@ const { slug } = Astro.params;
 const post = await getPost(slug);
 const { title, header, tags, publishedDate, updatedDate, content } = post;
 
-// console.log(content)
-
 ---
 
 <Layout title={title} classes="pt-0 lg:pb-xl lg:w-11/12 m-auto">
-    <hgroup class="header">
-        {header && (<img src={getImageSrc(header)} alt="image d'en-tête" />)}
-        <h1>{title}</h1>
-        {
-            publishedDate && (
-                <span>
-                    Publié le <FormattedDate date={publishedDate} />
-                    {
-                        updatedDate && (
-                            <span>
-                                 - Mise à jour le <FormattedDate date={updatedDate} />
-                            </span>
-                        )
-                    }
-                </span>
-            )
-        }
-        {
-            tags?.length > 0 && (
-                <ul class="flex justify-center gap-md mt-sm">
-                    {tags.map(tag => <li class="bg-primary rounded-sm shadow w-fit px-xs py-xxs">{tag}</li>)}
-                </ul>
-                
-            )
-        }
-    </hgroup>
-    <section class="content">
-        { content.map(block => <BlockFactory block={block}/>)}
-    </section>
+    {header && (
+        <header>
+            <img src={getImageSrc(header)} alt="image d'en-tête" />
+        </header>
+    )}
+    <main>
+        <hgroup>
+            <h1>{title}</h1>
+            {
+                publishedDate && (
+                    <span>
+                        Publié le <FormattedDate date={publishedDate} />
+                        {
+                            updatedDate && (
+                                <span>
+                                     - Mise à jour le <FormattedDate date={updatedDate} />
+                                </span>
+                            )
+                        }
+                    </span>
+                )
+            }
+            {
+                tags?.length > 0 && (
+                    <ul class="flex justify-center gap-md mt-sm">
+                        {tags.map(tag => <li class="bg-primary rounded-sm shadow w-fit px-xs py-xxs">{tag}</li>)}
+                    </ul>
+                    
+                )
+            }
+        </hgroup>
+
+        <section>
+            { content.map(block => <BlockFactory block={block}/>)}
+        </section>
+    </main>
 </Layout>
 
 <style>
-    .header {
-        @apply text-center border-b-[0.5px] border-b-secondary pb-md mb-xl py-lg;
+    header {
         > img {
-            @apply shadow-md w-full rounded-lg mb-md h-[40vh] object-cover;
+            @apply shadow-md w-full mb-md h-[40vh] object-cover;
         }
     }
 
-    .content {
-        @apply w-11/12 m-auto flex flex-col gap-md;
-
-        a {
-            @apply underline ;
+    main {
+        hgroup {
+            @apply text-center border-b-[0.5px] border-b-secondary pb-lg;
         }
 
-        ul {
-            @apply list-image-[url('/list-custom-marker.png')] leading-7 pl-md;
-            li {
-                @apply pl-xs
+        section {
+            @apply w-11/12 m-auto flex flex-col gap-md mt-sm mb-lg;
+
+            a {
+                @apply underline ;
+            }
+
+            ul {
+                @apply list-image-[url('/list-custom-marker.png')] leading-7 pl-md;
+                li {
+                    @apply pl-xs
+                }
             }
         }
     }
 
     @media (max-width: 720px) {
-        .header, .content {
+        main > section {
             @apply w-full;
         }
     }

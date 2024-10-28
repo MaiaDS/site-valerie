@@ -1,11 +1,11 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
-import Logo from './Logo.astro';
+import Logo from '../utils/Logo.astro';
 import { ComponentType } from 'react';
 
-type Props = HTMLAttributes<'a'> & {Ico?: ComponentType};
+type Props = HTMLAttributes<'a'> & {Ico?: ComponentType, description?: string};
 
-const { href, Ico, ...props } = Astro.props;
+const { href, Ico, description, ...props } = Astro.props;
 
 const { pathname } = Astro.url;
 const subpath = pathname.match(/[^\/]+/g);
@@ -13,7 +13,8 @@ const isActive = href === pathname || href === '/' + subpath?.[0];
 ---
 
 <a href={href} class:list={[{ active: isActive }]} {...props}>
-    {isActive && <Logo />}
+    {isActive && !description && <Logo />}
+    {description && <span class="sr-only">suivez moi sur instagram</span>}
     <span class="ico">{Ico && <Ico />}</span>
 	<slot />
 </a>
